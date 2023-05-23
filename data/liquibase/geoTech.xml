@@ -1,0 +1,729 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+                        http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet author="IOSB" id="2023-05-23_Sequences" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createSequence
+            sequenceName="bh_thing_id_seq"
+            dataType="bigint"
+            cacheSize="1" cycle="false" incrementBy="1"
+            minValue="1" maxValue="9223372036854775807" startValue="1" />
+        <createSequence
+            sequenceName="bh_foi_types_id_seq"
+            dataType="bigint"
+            cacheSize="1" cycle="false" incrementBy="1"
+            maxValue="9223372036854775807" minValue="1" startValue="1" />
+        <createSequence
+            sequenceName="bh_fois_id_seq"
+            dataType="bigint"
+            cacheSize="1" cycle="false" incrementBy="1"
+            maxValue="9223372036854775807" minValue="1" startValue="1" />
+    </changeSet>
+
+
+    <changeSet author="IOSB" id="2023-05-23_BH_PreparationProcedure" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="BH_PreparationProcedure">
+            <column autoIncrement="true" name="ID" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_preparationprocedure" />
+            </column>
+            <column name="NAME" type="TEXT" />
+            <column name="DESCRIPTION" type="TEXT" />
+            <column name="LINK" type="TEXT" />
+            <column name="PROPERTIES" type="TEXT" />
+            <column name="PREPARATION_STEP_ID" type="BIGINT" />
+        </createTable>
+    </changeSet>
+
+    <changeSet author="IOSB" id="2023-05-23_BH_PreparationStep" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="BH_PreparationStep">
+            <column autoIncrement="true" name="ID" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_preparationstep" />
+            </column>
+            <column name="NAME" type="TEXT" />
+            <column name="DESCRIPTION" type="TEXT" />
+            <column name="TIME" type="TIMESTAMP WITH TIME ZONE" />
+            <column name="LINK" type="TEXT" />
+            <column name="PROPERTIES" type="TEXT" />
+            <column name="HOLE_FOI_ID" type="BIGINT" />
+            <column name="CORE_FOI_ID" type="BIGINT" />
+            <column name="HOLE_POINT_FOI_ID" type="BIGINT" />
+            <column name="CORE_POINT_FOI_ID" type="BIGINT" />
+            <column name="HOLE_SEGMENT_FOI_ID" type="BIGINT" />
+            <column name="CORE_SEGMENT_FOI_ID" type="BIGINT" />
+        </createTable>
+    </changeSet>
+    <changeSet author="IOSB" id="2023-05-23_BH_Samplers" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="BH_Samplers">
+            <column autoIncrement="true" name="ID" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_samplers" />
+            </column>
+            <column name="NAME" type="TEXT" />
+            <column name="DESCRIPTION" type="TEXT" />
+            <column name="LINK" type="TEXT" />
+            <column name="SAMPLER_TYPE" type="TEXT" />
+            <column name="SAMPLING_PROCEDURE_ID" type="BIGINT" />
+            <column name="PROPERTIES" type="TEXT" />
+        </createTable>
+    </changeSet>
+
+    <changeSet author="IOSB" id="2023-05-23_BH_SamplingProcedures" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="BH_SamplingProcedures">
+            <column autoIncrement="true" name="ID" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_samplingprocedures" />
+            </column>
+            <column name="NAME" type="TEXT" />
+            <column name="DESCRIPTION" type="TEXT" />
+            <column name="LINK" type="TEXT" />
+            <column name="PROPERTIES" type="TEXT" />
+        </createTable>
+    </changeSet>
+
+    <changeSet author="IOSB" id="2023-05-23_BH_Samplings" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="BH_Samplings">
+            <column autoIncrement="true" name="ID" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_samplings" />
+            </column>
+            <column name="NAME" type="TEXT" />
+            <column name="DESCRIPTION" type="TEXT" />
+            <column name="SAMPLING_LOCATION" type="GEOMETRY" />
+            <column name="TIME" type="TIMESTAMP WITH TIME ZONE" />
+            <column name="TRAJECTORY_ID" type="BIGINT" />
+            <column name="SAMPLING_PROCEDURE_ID" type="BIGINT" />
+            <column name="SAMPLER_ID" type="BIGINT" />
+            <column name="PARAMETER" type="TEXT" />
+            <column name="AT_POSITION" type="FLOAT8" />
+            <column name="FROM_POSITION" type="FLOAT8" />
+            <column name="TO_POSITION" type="FLOAT8" />
+            <column name="POSITION_UOM" type="TEXT" />
+        </createTable>
+    </changeSet>
+
+
+    <!--
+        Things
+    -->
+    <changeSet author="IOSB" id="2023-05-23_BH_CollarThings" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="BH_CollarThings">
+            <column name="ID" type="BIGINT" defaultValueComputed="nextval('bh_thing_id_seq')">
+                <constraints primaryKeyName="pk_bh_collarthings" nullable="false" primaryKey="true" />
+            </column>
+            <column name="DESCRIPTION" type="TEXT" />
+            <column name="PROPERTIES" type="TEXT" />
+            <column name="NAME" type="TEXT" />
+        </createTable>
+    </changeSet>
+
+    <changeSet author="IOSB" id="2023-05-23_BH_CollarThings_LOCATIONS" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="BH_CollarThings_LOCATIONS">
+            <column name="BH_CollarThing_ID" type="BIGINT">
+                <constraints primaryKeyName="pk_bh_collarthings_locations" nullable="false" primaryKey="true" />
+            </column>
+            <column name="LOCATION_ID" type="BIGINT">
+                <constraints primaryKeyName="pk_bh_collarthings_locations" nullable="false" primaryKey="true" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="IOSB" id="2023-05-23_BH_TrajectoryThings" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="BH_TrajectoryThings">
+            <column name="ID" type="BIGINT" defaultValueComputed="nextval('bh_thing_id_seq')">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_trajectorythings" />
+            </column>
+            <column name="DESCRIPTION" type="TEXT" />
+            <column name="PROPERTIES" type="TEXT" />
+            <column name="NAME" type="TEXT" />
+            <column name="OFFSET_HOLE" type="FLOAT8" />
+            <column name="OFFSET_CORE" type="FLOAT8" />
+            <column name="LENGTH_HOLE" type="FLOAT8" />
+            <column name="LENGTH_CORE" type="FLOAT8" />
+            <column name="UOM" type="TEXT" />
+        </createTable>
+    </changeSet>
+
+    <changeSet author="IOSB" id="2023-05-23_BH_TrajectoryThings_LOCATIONS" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="BH_TrajectoryThings_LOCATIONS">
+            <column name="BH_TrajectoryThing_ID" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_trajectorythings_locations" />
+            </column>
+            <column name="LOCATION_ID" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_trajectorythings_locations" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="IOSB" id="2023-05-23_THINGS_view" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <dropForeignKeyConstraint baseTableName="DATASTREAMS" constraintName="DATASTREAMS_THING_ID_FKEY" />
+        <dropForeignKeyConstraint baseTableName="HIST_LOCATIONS" constraintName="HIST_LOCATIONS_THING_ID_FKEY" />
+        <dropForeignKeyConstraint baseTableName="THINGS_LOCATIONS" constraintName="THINGS_LOCATIONS_THING_ID_FKEY" />
+        <dropTable tableName="THINGS" />
+        <createView viewName="THINGS" replaceIfExists="true">
+            SELECT
+                "BH_CollarThings"."ID",
+                "BH_CollarThings"."DESCRIPTION",
+                ("BH_CollarThings"."PROPERTIES")::jsonb AS "PROPERTIES",
+                "BH_CollarThings"."NAME"
+            FROM "BH_CollarThings"
+            UNION
+            SELECT
+                "BH_TrajectoryThings"."ID",
+                "BH_TrajectoryThings"."DESCRIPTION",
+                ((json_build_object('offsetHole', "BH_TrajectoryThings"."OFFSET_HOLE", 'offsetCore', "BH_TrajectoryThings"."OFFSET_CORE", 'lengthHole', "BH_TrajectoryThings"."LENGTH_HOLE", 'lengthCore', "BH_TrajectoryThings"."LENGTH_CORE"))::jsonb || ("BH_TrajectoryThings"."PROPERTIES")::jsonb) AS "PROPERTIES",
+                "BH_TrajectoryThings"."NAME"
+            FROM "BH_TrajectoryThings";
+        </createView>
+    </changeSet>
+
+    <changeSet author="IOSB" id="2023-05-23_THINGS_LOCATIONS_view" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <dropTable tableName="THINGS_LOCATIONS" />
+        <createView viewName="THINGS_LOCATIONS" replaceIfExists="true">
+            SELECT
+                "BH_CollarThings_LOCATIONS"."BH_CollarThing_ID",
+                "BH_CollarThings_LOCATIONS"."LOCATION_ID"
+            FROM "BH_CollarThings_LOCATIONS"
+            UNION
+            SELECT
+                "BH_TrajectoryThings_LOCATIONS"."BH_TrajectoryThing_ID",
+                "BH_TrajectoryThings_LOCATIONS"."LOCATION_ID"
+            FROM "BH_TrajectoryThings_LOCATIONS";
+        </createView>
+    </changeSet>
+
+
+    <!--
+        Features Of Interest Types
+    -->
+    <changeSet author="IOSB" id="2023-05-23_BH_CoreFoITypes" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="BH_CoreFoITypes">
+            <column name="ID" type="BIGINT" defaultValueComputed="nextval('bh_foi_types_id_seq')">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_core_foi_types" />
+            </column>
+            <column name="FOI_ID" type="BIGINT">
+                <constraints nullable="false" />
+            </column>
+            <column name="FOI_TYPE" type="TEXT">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="IOSB" id="2023-05-23_BH_CorePointFoITypes" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="BH_CorePointFoITypes">
+            <column name="ID" type="BIGINT" defaultValueComputed="nextval('bh_foi_types_id_seq')">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_core_point_foi_types" />
+            </column>
+            <column name="FOI_ID" type="BIGINT">
+                <constraints nullable="false" />
+            </column>
+            <column name="FOI_TYPE" type="TEXT">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="IOSB" id="2023-05-23_BH_CoreSegmentFoITypes" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="BH_CoreSegmentFoITypes">
+            <column name="ID" type="BIGINT" defaultValueComputed="nextval('bh_foi_types_id_seq')">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_core_segment_foi_types" />
+            </column>
+            <column name="FOI_ID" type="BIGINT">
+                <constraints nullable="false" />
+            </column>
+            <column name="FOI_TYPE" type="TEXT">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="IOSB" id="2023-05-23_BH_HoleFoITypes" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="BH_HoleFoITypes">
+            <column name="ID" type="BIGINT" defaultValueComputed="nextval('bh_foi_types_id_seq')">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_hole_foi_types" />
+            </column>
+            <column name="FOI_ID" type="BIGINT">
+                <constraints nullable="false" />
+            </column>
+            <column name="FOI_TYPE" type="TEXT">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="IOSB" id="2023-05-23_BH_HolePointFoITypes" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="BH_HolePointFoITypes">
+            <column name="ID" type="BIGINT" defaultValueComputed="nextval('bh_foi_types_id_seq')">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_hole_point_foi_types" />
+            </column>
+            <column name="FOI_ID" type="BIGINT">
+                <constraints nullable="false" />
+            </column>
+            <column name="FOI_TYPE" type="TEXT">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="IOSB" id="2023-05-23_BH_HoleSegmentFoITypes" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="BH_HoleSegmentFoITypes">
+            <column name="ID" type="BIGINT" defaultValueComputed="nextval('bh_foi_types_id_seq')">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_hole_segment_foi_types" />
+            </column>
+            <column name="FOI_ID" type="BIGINT">
+                <constraints nullable="false" />
+            </column>
+            <column name="FOI_TYPE" type="TEXT">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="IOSB" id="2023-05-23_BH_FOI_TYPES" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createView viewName="BH_FOI_TYPES" replaceIfExists="true">
+            SELECT
+                "BH_HoleFoITypes"."ID",
+                "BH_HoleFoITypes"."FOI_ID",
+                "BH_HoleFoITypes"."FOI_TYPE"
+            FROM "BH_HoleFoITypes"
+            UNION
+            SELECT
+                "BH_HolePointFoITypes"."ID",
+                "BH_HolePointFoITypes"."FOI_ID",
+                "BH_HolePointFoITypes"."FOI_TYPE"
+            FROM "BH_HolePointFoITypes"
+            UNION
+            SELECT
+                "BH_HoleSegmentFoITypes"."ID",
+                "BH_HoleSegmentFoITypes"."FOI_ID",
+                "BH_HoleSegmentFoITypes"."FOI_TYPE"
+            FROM "BH_HoleSegmentFoITypes"
+            UNION
+            SELECT
+                "BH_CoreFoITypes"."ID",
+                "BH_CoreFoITypes"."FOI_ID",
+                "BH_CoreFoITypes"."FOI_TYPE"
+            FROM "BH_CoreFoITypes"
+            UNION
+            SELECT
+                "BH_CorePointFoITypes"."ID",
+                "BH_CorePointFoITypes"."FOI_ID",
+                "BH_CorePointFoITypes"."FOI_TYPE"
+            FROM "BH_CorePointFoITypes"
+            UNION
+            SELECT
+                "BH_CoreSegmentFoITypes"."ID",
+                "BH_CoreSegmentFoITypes"."FOI_ID",
+                "BH_CoreSegmentFoITypes"."FOI_TYPE"
+            FROM "BH_CoreSegmentFoITypes";
+        </createView>
+    </changeSet>
+
+
+    <!--
+        Features Of Interest
+    -->
+    <changeSet author="IOSB" id="2023-05-23_BH_CoreFoIs" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="BH_CoreFoIs">
+            <column name="ID" type="BIGINT" defaultValueComputed="nextval('bh_fois_id_seq')">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_corefois" />
+            </column>
+            <column name="NAME" type="TEXT" />
+            <column name="DESCRIPTION" type="TEXT" />
+            <column name="ENCODING_TYPE" type="TEXT" />
+            <column name="FEATURE" type="GEOMETRY" />
+            <column name="LENGTH" type="FLOAT8" />
+            <column name="PROPERTIES" type="TEXT" />
+            <column name="SAMPLING_ID" type="BIGINT" />
+            <column name="LENGTH_UOM" type="TEXT" />
+        </createTable>
+    </changeSet>
+    <changeSet author="IOSB" id="2023-05-23_BH_CorePointFoIs" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="BH_CorePointFoIs">
+            <column name="ID" type="BIGINT" defaultValueComputed="nextval('bh_fois_id_seq')">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_corepointfois" />
+            </column>
+            <column name="NAME" type="TEXT" />
+            <column name="DESCRIPTION" type="TEXT" />
+            <column name="ENCODING_TYPE" type="TEXT" />
+            <column name="FEATURE" type="GEOMETRY" />
+            <column name="PROPERTIES" type="TEXT" />
+            <column name="SAMPLING_ID" type="BIGINT" />
+            <column name="SAMPLED_FEATURE_ID" type="BIGINT" />
+        </createTable>
+    </changeSet>
+    <changeSet author="IOSB" id="2023-05-23_BH_CoreSegmentFoIs" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="BH_CoreSegmentFoIs">
+            <column name="ID" type="BIGINT" defaultValueComputed="nextval('bh_fois_id_seq')">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_coresegmentfois" />
+            </column>
+            <column name="NAME" type="TEXT" />
+            <column name="DESCRIPTION" type="TEXT" />
+            <column name="ENCODING_TYPE" type="TEXT" />
+            <column name="FEATURE" type="GEOMETRY" />
+            <column name="PROPERTIES" type="TEXT" />
+            <column name="SAMPLING_ID" type="BIGINT" />
+            <column name="LENGTH" type="FLOAT8" />
+            <column name="LENGTH_UOM" type="TEXT" />
+            <column name="RECOVERY_PERCENTAGE" type="FLOAT8" />
+            <column name="SAMPLED_FEATURE_ID" type="BIGINT" />
+        </createTable>
+    </changeSet>
+    <changeSet author="IOSB" id="2023-05-23_BH_HoleFoIs" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="BH_HoleFoIs">
+            <column name="ID" type="BIGINT" defaultValueComputed="nextval('bh_fois_id_seq')">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_holefoi" />
+            </column>
+            <column name="NAME" type="TEXT" />
+            <column name="DESCRIPTION" type="TEXT" />
+            <column name="ENCODING_TYPE" type="TEXT" />
+            <column name="FEATURE" type="GEOMETRY" />
+            <column name="LENGTH" type="FLOAT8" />
+            <column name="PROPERTIES" type="TEXT" />
+            <column name="SAMPLING_ID" type="BIGINT" />
+            <column name="LENGTH_UOM" type="TEXT" />
+        </createTable>
+    </changeSet>
+    <changeSet author="IOSB" id="2023-05-23_BH_HolePointFoIs" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="BH_HolePointFoIs">
+            <column name="ID" type="BIGINT" defaultValueComputed="nextval('bh_fois_id_seq')">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_holepointfoi" />
+            </column>
+            <column name="NAME" type="TEXT" />
+            <column name="DESCRIPTION" type="TEXT" />
+            <column name="ENCODING_TYPE" type="TEXT" />
+            <column name="FEATURE" type="GEOMETRY" />
+            <column name="PROPERTIES" type="TEXT" />
+            <column name="SAMPLING_ID" type="BIGINT" />
+            <column name="SAMPLED_FEATURE_ID" type="BIGINT" />
+        </createTable>
+    </changeSet>
+    <changeSet author="IOSB" id="2023-05-23_BH_HoleSegmentFoIs" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="BH_HoleSegmentFoIs">
+            <column name="ID" type="BIGINT" defaultValueComputed="nextval('bh_fois_id_seq')">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_holesegmentfoi" />
+            </column>
+            <column name="NAME" type="TEXT" />
+            <column name="DESCRIPTION" type="TEXT" />
+            <column name="ENCODING_TYPE" type="TEXT" />
+            <column name="FEATURE" type="GEOMETRY" />
+            <column name="PROPERTIES" type="TEXT" />
+            <column name="SAMPLING_ID" type="BIGINT" />
+            <column name="LENGTH" type="FLOAT8" />
+            <column name="LENGTH_UOM" type="TEXT" />
+            <column name="SAMPLED_FEATURE_ID" type="BIGINT" />
+        </createTable>
+    </changeSet>
+
+    <changeSet author="IOSB" id="2023-05-23_FEATURES_view" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <dropForeignKeyConstraint baseTableName="OBSERVATIONS" constraintName="OBSERVATIONS_FEATURE_ID_FKEY" />
+        <dropTable tableName="FEATURES" />
+        <createView fullDefinition="false" viewName="FEATURES">
+            SELECT
+                "BH_HoleFoIs"."ID",
+                "BH_HoleFoIs"."NAME",
+                "BH_HoleFoIs"."DESCRIPTION",
+                "BH_HoleFoIs"."ENCODING_TYPE",
+                "BH_HoleFoIs"."FEATURE",
+                ((json_build_object('length', "BH_HoleFoIs"."LENGTH", 'length_uom', "BH_HoleFoIs"."LENGTH_UOM"))::jsonb || ("BH_HoleFoIs"."PROPERTIES")::jsonb) AS "PROPERTIES"
+            FROM "BH_HoleFoIs"
+            UNION
+            SELECT
+                "BH_CoreFoIs"."ID",
+                "BH_CoreFoIs"."NAME",
+                "BH_CoreFoIs"."DESCRIPTION",
+                "BH_CoreFoIs"."ENCODING_TYPE",
+                "BH_CoreFoIs"."FEATURE",
+                ((json_build_object('length', "BH_CoreFoIs"."LENGTH", 'length_uom', "BH_CoreFoIs"."LENGTH_UOM"))::jsonb || ("BH_CoreFoIs"."PROPERTIES")::jsonb) AS "PROPERTIES"
+            FROM "BH_CoreFoIs"
+            UNION
+            SELECT
+                "BH_HolePointFoIs"."ID",
+                "BH_HolePointFoIs"."NAME",
+                "BH_HolePointFoIs"."DESCRIPTION",
+                "BH_HolePointFoIs"."ENCODING_TYPE",
+                "BH_HolePointFoIs"."FEATURE",
+                ("BH_HolePointFoIs"."PROPERTIES")::jsonb AS "PROPERTIES"
+            FROM "BH_HolePointFoIs"
+            UNION
+            SELECT
+                "BH_CorePointFoIs"."ID",
+                "BH_CorePointFoIs"."NAME",
+                "BH_CorePointFoIs"."DESCRIPTION",
+                "BH_CorePointFoIs"."ENCODING_TYPE",
+                "BH_CorePointFoIs"."FEATURE",
+                ("BH_CorePointFoIs"."PROPERTIES")::jsonb AS "PROPERTIES"
+            FROM "BH_CorePointFoIs"
+            UNION
+            SELECT
+                "BH_HoleSegmentFoIs"."ID",
+                "BH_HoleSegmentFoIs"."NAME",
+                "BH_HoleSegmentFoIs"."DESCRIPTION",
+                "BH_HoleSegmentFoIs"."ENCODING_TYPE",
+                "BH_HoleSegmentFoIs"."FEATURE",
+                ((json_build_object('length', "BH_HoleSegmentFoIs"."LENGTH", 'length_uom', "BH_HoleSegmentFoIs"."LENGTH_UOM"))::jsonb || ("BH_HoleSegmentFoIs"."PROPERTIES")::jsonb) AS "PROPERTIES"
+            FROM "BH_HoleSegmentFoIs"
+            UNION
+            SELECT
+                "BH_CoreSegmentFoIs"."ID",
+                "BH_CoreSegmentFoIs"."NAME",
+                "BH_CoreSegmentFoIs"."DESCRIPTION",
+                "BH_CoreSegmentFoIs"."ENCODING_TYPE",
+                "BH_CoreSegmentFoIs"."FEATURE",
+                ((json_build_object('length', "BH_CoreSegmentFoIs"."LENGTH", 'length_uom', "BH_CoreSegmentFoIs"."LENGTH_UOM", 'recovery_percentage', "BH_CoreSegmentFoIs"."RECOVERY_PERCENTAGE"))::jsonb || ("BH_CoreSegmentFoIs"."PROPERTIES")::jsonb) AS "PROPERTIES"
+            FROM "BH_CoreSegmentFoIs";
+        </createView>
+    </changeSet>
+
+
+    <changeSet author="IOSB" id="2023-05-23_BH_ass_related_datastream" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="BH_ass_related_datastream">
+            <column name="datastream_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_related_datastream" />
+            </column>
+            <column name="related_datastream_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_related_datastream" />
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="IOSB" id="2023-05-23_BH_ass_related_observation" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="BH_ass_related_observation">
+            <column name="observation_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_related_observation" />
+            </column>
+            <column name="related_observation_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_related_observation" />
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <changeSet author="IOSB" id="2023-05-23_Indices" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createIndex tableName="BH_CollarThings_LOCATIONS" indexName="BH_CollarThings_LOCATIONS_BH_CollarThing_ID">
+            <column name="BH_CollarThing_ID" />
+        </createIndex>
+        <createIndex tableName="BH_CollarThings_LOCATIONS" indexName="BH_CollarThings_LOCATIONS_LOCATION_ID">
+            <column name="LOCATION_ID" />
+        </createIndex>
+        <createIndex tableName="BH_TrajectoryThings_LOCATIONS" indexName="BH_TrajectoryThings_LOCATIONS_BH_TrajectoryThing_ID">
+            <column name="BH_TrajectoryThing_ID" />
+        </createIndex>
+        <createIndex tableName="BH_TrajectoryThings_LOCATIONS" indexName="BH_TrajectoryThings_LOCATIONS_LOCATION_ID">
+            <column name="LOCATION_ID" />
+        </createIndex>
+    </changeSet>
+
+
+    <changeSet author="IOSB" id="2023-05-23_ForeignKeys" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint constraintName="BH_CollarThings_LOCATIONS_BH_CollarThing_ID_FKEY"
+            baseTableName="BH_CollarThings_LOCATIONS" baseColumnNames="BH_CollarThing_ID"
+            referencedTableName="BH_CollarThings" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="BH_CollarThings_LOCATIONS_LOCATION_ID_FKEY"
+            baseTableName="BH_CollarThings_LOCATIONS" baseColumnNames="LOCATION_ID"
+            referencedTableName="LOCATIONS" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="BH_CoreFoIs_SAMPLING_ID_FKEY"
+            baseTableName="BH_CoreFoIs" baseColumnNames="SAMPLING_ID"
+            referencedTableName="BH_Samplings" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="BH_CorePointFoIs_SAMPLED_FEATURE_ID_FKEY"
+            baseTableName="BH_CorePointFoIs" baseColumnNames="SAMPLED_FEATURE_ID"
+            referencedTableName="BH_CoreFoIs" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="BH_CorePointFoIs_SAMPLING_ID_FKEY"
+            baseTableName="BH_CorePointFoIs" baseColumnNames="SAMPLING_ID"
+            referencedTableName="BH_Samplings" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="BH_CoreSegmentFoIs_SAMPLED_FEATURE_ID_FKEY"
+            baseTableName="BH_CoreSegmentFoIs" baseColumnNames="SAMPLED_FEATURE_ID"
+            referencedTableName="BH_CoreFoIs" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="BH_CoreSegmentFoIs_SAMPLING_ID_FKEY"
+            baseTableName="BH_CoreSegmentFoIs" baseColumnNames="SAMPLING_ID"
+            referencedTableName="BH_Samplings" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="BH_HoleFoI_SAMPLING_ID_FKEY"
+            baseTableName="BH_HoleFoIs" baseColumnNames="SAMPLING_ID"
+            referencedTableName="BH_Samplings" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="BH_HolePointFoI_SAMPLING_ID_FKEY"
+            baseTableName="BH_HolePointFoIs" baseColumnNames="SAMPLING_ID"
+            referencedTableName="BH_Samplings" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="BH_HolePointFoIs_SAMPLED_FEATURE_ID_FKEY"
+            baseTableName="BH_HolePointFoIs" baseColumnNames="SAMPLED_FEATURE_ID"
+            referencedTableName="BH_HoleFoIs" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="BH_HoleSegmentFoI_SAMPLING_ID_FKEY"
+            baseTableName="BH_HoleSegmentFoIs" baseColumnNames="SAMPLING_ID"
+            referencedTableName="BH_Samplings" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="BH_HoleSegmentFoIs_SAMPLED_FEATURE_ID_FKEY"
+            baseTableName="BH_HoleSegmentFoIs" baseColumnNames="SAMPLED_FEATURE_ID"
+            referencedTableName="BH_HoleFoIs" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="BH_PreparationProcedure_PREPARATION_STEP_ID_FKEY"
+            baseTableName="BH_PreparationProcedure" baseColumnNames="PREPARATION_STEP_ID"
+            referencedTableName="BH_PreparationStep" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="BH_PreparationStep_CORE_FOI_ID_FKEY"
+            baseTableName="BH_PreparationStep" baseColumnNames="CORE_FOI_ID"
+            referencedTableName="BH_CoreFoIs" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="BH_PreparationStep_CORE_POINT_FOI_ID_FKEY"
+            baseTableName="BH_PreparationStep" baseColumnNames="CORE_POINT_FOI_ID"
+            referencedTableName="BH_CorePointFoIs" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="BH_PreparationStep_CORE_SEGMENT_FOI_ID_FKEY"
+            baseTableName="BH_PreparationStep" baseColumnNames="CORE_SEGMENT_FOI_ID"
+            referencedTableName="BH_CoreSegmentFoIs" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="BH_PreparationStep_HOLE_FOI_ID_FKEY"
+            baseTableName="BH_PreparationStep" baseColumnNames="HOLE_FOI_ID"
+            referencedTableName="BH_HoleFoIs" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="BH_PreparationStep_HOLE_POINT_FOI_ID_FKEY"
+            baseTableName="BH_PreparationStep" baseColumnNames="HOLE_POINT_FOI_ID"
+            referencedTableName="BH_HolePointFoIs" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="BH_PreparationStep_HOLE_SEGMENT_FOI_ID_FKEY"
+            baseTableName="BH_PreparationStep" baseColumnNames="HOLE_SEGMENT_FOI_ID"
+            referencedTableName="BH_HoleSegmentFoIs" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="BH_Samplers_SAMPLING_PROCEDURE_ID_FKEY"
+            baseTableName="BH_Samplers" baseColumnNames="SAMPLING_PROCEDURE_ID"
+            referencedTableName="BH_SamplingProcedures" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="BH_Samplings_TRAJECTORY_ID_FKEY"
+            baseTableName="BH_Samplings" baseColumnNames="TRAJECTORY_ID"
+            referencedTableName="BH_TrajectoryThings" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="BH_TrajectoryThings_LOCATIONS_BH_TrajectoryThing_ID_FKEY"
+            baseTableName="BH_TrajectoryThings_LOCATIONS" baseColumnNames="BH_TrajectoryThing_ID"
+            referencedTableName="BH_TrajectoryThings" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="BH_TrajectoryThings_LOCATIONS_LOCATION_ID_FKEY"
+            baseTableName="BH_TrajectoryThings_LOCATIONS" baseColumnNames="LOCATION_ID"
+            referencedTableName="LOCATIONS" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="DATASTREAMS_THING_ID_FKEY"
+            baseTableName="DATASTREAMS" baseColumnNames="THING_ID"
+            referencedTableName="THINGS" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="HIST_LOCATIONS_THING_ID_FKEY"
+            baseTableName="HIST_LOCATIONS" baseColumnNames="THING_ID"
+            referencedTableName="THINGS" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="OBSERVATIONS_FEATURE_ID_FKEY"
+            baseTableName="OBSERVATIONS" baseColumnNames="FEATURE_ID"
+            referencedTableName="FEATURES" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+
+
+        <addForeignKeyConstraint constraintName="THINGS_LOCATIONS_LOCATION_ID_FKEY"
+            baseTableName="THINGS_LOCATIONS" baseColumnNames="LOCATION_ID"
+            referencedTableName="LOCATIONS" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="THINGS_LOCATIONS_THING_ID_FKEY"
+            baseTableName="THINGS_LOCATIONS" baseColumnNames="THING_ID"
+            referencedTableName="THINGS" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="USER_ROLES_USERS_FKEY"
+            baseTableName="USER_ROLES" baseColumnNames="USER_NAME"
+            referencedTableName="USERS" referencedColumnNames="USER_NAME"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="bh_core_foi_id_fkey"
+            baseTableName="BH_CoreFoITypes" baseColumnNames="FOI_ID"
+            referencedTableName="BH_CoreFoIs" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="bh_core_point_foi_id_fkey"
+            baseTableName="BH_CorePointFoITypes" baseColumnNames="FOI_ID"
+            referencedTableName="BH_CorePointFoIs" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="bh_core_segment_foi_id_fkey"
+            baseTableName="BH_CoreSegmentFoITypes" baseColumnNames="FOI_ID"
+            referencedTableName="BH_CoreSegmentFoIs" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="bh_hole_foi_id_fkey"
+            baseTableName="BH_HoleFoITypes" baseColumnNames="FOI_ID"
+            referencedTableName="BH_HoleFoIs" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="bh_hole_point_foi_id_fkey"
+            baseTableName="BH_HolePointFoITypes" baseColumnNames="FOI_ID"
+            referencedTableName="BH_HolePointFoIs" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="bh_hole_segment_foi_id_fkey"
+            baseTableName="BH_HoleSegmentFoITypes" baseColumnNames="FOI_ID"
+            referencedTableName="BH_HoleSegmentFoIs" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="bh_related_datastream_datastream_id_fkey"
+            baseTableName="BH_ass_related_datastream" baseColumnNames="datastream_id"
+            referencedTableName="DATASTREAMS" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="bh_related_datastream_related_datastream_id_fkey"
+            baseTableName="BH_ass_related_datastream" baseColumnNames="related_datastream_id"
+            referencedTableName="DATASTREAMS" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="bh_related_observation_observation_id_fkey"
+            baseTableName="BH_ass_related_observation" baseColumnNames="observation_id"
+            referencedTableName="OBSERVATIONS" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="bh_related_observation_related_observation_id_fkey"
+            baseTableName="BH_ass_related_observation" baseColumnNames="related_observation_id"
+            referencedTableName="OBSERVATIONS" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="bh_samplings_sampler_id_fkey"
+            baseTableName="BH_Samplings" baseColumnNames="SAMPLER_ID"
+            referencedTableName="BH_Samplers" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="bh_samplings_sampling_procedure_id_fkey"
+            baseTableName="BH_Samplings" baseColumnNames="SAMPLING_PROCEDURE_ID"
+            referencedTableName="BH_SamplingProcedures" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+    </changeSet>
+
+</databaseChangeLog>
