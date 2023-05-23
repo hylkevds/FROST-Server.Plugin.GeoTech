@@ -633,37 +633,7 @@
             referencedTableName="LOCATIONS" referencedColumnNames="ID"
             deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
 
-        <addForeignKeyConstraint constraintName="DATASTREAMS_THING_ID_FKEY"
-            baseTableName="DATASTREAMS" baseColumnNames="THING_ID"
-            referencedTableName="THINGS" referencedColumnNames="ID"
-            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
 
-        <addForeignKeyConstraint constraintName="HIST_LOCATIONS_THING_ID_FKEY"
-            baseTableName="HIST_LOCATIONS" baseColumnNames="THING_ID"
-            referencedTableName="THINGS" referencedColumnNames="ID"
-            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
-
-        <addForeignKeyConstraint constraintName="OBSERVATIONS_FEATURE_ID_FKEY"
-            baseTableName="OBSERVATIONS" baseColumnNames="FEATURE_ID"
-            referencedTableName="FEATURES" referencedColumnNames="ID"
-            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
-
-
-
-        <addForeignKeyConstraint constraintName="THINGS_LOCATIONS_LOCATION_ID_FKEY"
-            baseTableName="THINGS_LOCATIONS" baseColumnNames="LOCATION_ID"
-            referencedTableName="LOCATIONS" referencedColumnNames="ID"
-            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
-
-        <addForeignKeyConstraint constraintName="THINGS_LOCATIONS_THING_ID_FKEY"
-            baseTableName="THINGS_LOCATIONS" baseColumnNames="THING_ID"
-            referencedTableName="THINGS" referencedColumnNames="ID"
-            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
-
-        <addForeignKeyConstraint constraintName="USER_ROLES_USERS_FKEY"
-            baseTableName="USER_ROLES" baseColumnNames="USER_NAME"
-            referencedTableName="USERS" referencedColumnNames="USER_NAME"
-            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
 
         <addForeignKeyConstraint constraintName="bh_core_foi_id_fkey"
             baseTableName="BH_CoreFoITypes" baseColumnNames="FOI_ID"
