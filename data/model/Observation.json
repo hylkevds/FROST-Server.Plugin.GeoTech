@@ -1,0 +1,167 @@
+{
+  "conformance": [],
+  "simplePropertyTypes": [],
+  "entityTypes": [
+    {
+      "name": "Observation",
+      "plural": "Observations",
+      "adminOnly": false,
+      "table": "OBSERVATIONS",
+      "entityProperties": [
+      ],
+      "navigationProperties": [
+        {
+          "name": "BhCoreFoi",
+          "entitySet": false,
+          "entityType": "BhCoreFoi",
+          "required": true,
+          "inverse": {
+            "name": "Observations",
+            "entitySet": true,
+            "required": false,
+            "annotations": []
+          },
+          "handlers": [
+            {
+              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperOneToMany",
+              "field": "FEATURE_ID",
+              "otherTable": "BH_CoreFoIs",
+              "otherField": "ID"
+            }
+          ],
+          "annotations": []
+        },
+        {
+          "name": "BhCorePointFoi",
+          "entitySet": false,
+          "entityType": "BhCorePointFoi",
+          "required": true,
+          "inverse": {
+            "name": "Observations",
+            "entitySet": true,
+            "required": false,
+            "annotations": []
+          },
+          "handlers": [
+            {
+              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperOneToMany",
+              "field": "FEATURE_ID",
+              "otherTable": "BH_CorePointFoIs",
+              "otherField": "ID"
+            }
+          ],
+          "annotations": []
+        },
+        {
+          "name": "BhCoreSegmentFoi",
+          "entitySet": false,
+          "entityType": "BhCoreSegmentFoi",
+          "required": true,
+          "inverse": {
+            "name": "Observations",
+            "entitySet": true,
+            "required": false,
+            "annotations": []
+          },
+          "handlers": [
+            {
+              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperOneToMany",
+              "field": "FEATURE_ID",
+              "otherTable": "BH_CoreSegmentFoIs",
+              "otherField": "ID"
+            }
+          ],
+          "annotations": []
+        },
+        {
+          "name": "BhHoleFoi",
+          "entitySet": false,
+          "entityType": "BhHoleFoi",
+          "required": true,
+          "inverse": {
+            "name": "Observations",
+            "entitySet": true,
+            "required": false,
+            "annotations": []
+          },
+          "handlers": [
+            {
+              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperOneToMany",
+              "field": "FEATURE_ID",
+              "otherTable": "BH_HoleFoIs",
+              "otherField": "ID"
+            }
+          ],
+          "annotations": []
+        },
+        {
+          "name": "BhHolePointFoi",
+          "entitySet": false,
+          "entityType": "BhHolePointFoi",
+          "required": true,
+          "inverse": {
+            "name": "Observations",
+            "entitySet": true,
+            "required": false,
+            "annotations": []
+          },
+          "handlers": [
+            {
+              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperOneToMany",
+              "field": "FEATURE_ID",
+              "otherTable": "BH_HolePointFoIs",
+              "otherField": "ID"
+            }
+          ],
+          "annotations": []
+        },
+        {
+          "name": "BhHoleSegmentFoi",
+          "entitySet": false,
+          "entityType": "BhHoleSegmentFoi",
+          "required": true,
+          "inverse": {
+            "name": "Observations",
+            "entitySet": true,
+            "required": false,
+            "annotations": []
+          },
+          "handlers": [
+            {
+              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperOneToMany",
+              "field": "FEATURE_ID",
+              "otherTable": "BH_HoleSegmentFoIs",
+              "otherField": "ID"
+            }
+          ],
+          "annotations": []
+        },
+        {
+          "name": "RelatedObservations",
+          "entitySet": true,
+          "entityType": "Observation",
+          "required": false,
+          "inverse": {
+            "name": "ObservationsRelated",
+            "entitySet": true,
+            "required": false,
+            "annotations": []
+          },
+          "handlers": [
+            {
+              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperManyToMany",
+              "field": "ID",
+              "linkTable": "BH_ass_related_observation",
+              "linkOurField": "observation_id",
+              "linkOtherField": "related_observation_id",
+              "otherTable": "OBSERVATIONS",
+              "otherField": "ID"
+            }
+          ],
+          "annotations": []
+        }
+      ],
+      "annotations": []
+    }
+  ]
+}

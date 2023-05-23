@@ -1,0 +1,83 @@
+{
+  "conformance": [],
+  "simplePropertyTypes": [],
+  "entityTypes": [
+    {
+      "name": "Datastream",
+      "plural": "Datastreams",
+      "adminOnly": false,
+      "table": "DATASTREAMS",
+      "entityProperties": [
+      ],
+      "navigationProperties": [
+        {
+          "name": "BhCollarThing",
+          "entitySet": false,
+          "entityType": "BhCollarThing",
+          "required": true,
+          "inverse": {
+            "name": "Datastreams",
+            "entitySet": true,
+            "required": false,
+            "annotations": []
+          },
+          "handlers": [
+            {
+              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperOneToMany",
+              "field": "THING_ID",
+              "otherTable": "BH_CollarThings",
+              "otherField": "ID"
+            }
+          ],
+          "annotations": []
+        },
+        {
+          "name": "BhTrajectoryThing",
+          "entitySet": false,
+          "entityType": "BhTrajectoryThing",
+          "required": true,
+          "inverse": {
+            "name": "Datastreams",
+            "entitySet": true,
+            "required": false,
+            "annotations": []
+          },
+          "handlers": [
+            {
+              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperOneToMany",
+              "field": "THING_ID",
+              "otherTable": "BH_TrajectoryThings",
+              "otherField": "ID"
+            }
+          ],
+          "annotations": []
+        },
+        {
+          "name": "RelatedDatastreams",
+          "entitySet": true,
+          "entityType": "Datastream",
+          "required": false,
+          "inverse": {
+            "name": "DatastreamsRelated",
+            "entitySet": true,
+            "required": false,
+            "annotations": []
+          },
+          "handlers": [
+            {
+              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperManyToMany",
+              "field": "ID",
+              "linkTable": "BH_ass_related_datastream",
+              "linkOurField": "datastream_id",
+              "linkOtherField": "related_datastream_id",
+              "otherTable": "DATASTREAMS",
+              "otherField": "ID"
+            }
+          ],
+          "annotations": []
+        }
+      ],
+      "annotations": []
+    }
+  ]
+}

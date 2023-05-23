@@ -1,0 +1,65 @@
+{
+  "conformance": [],
+  "simplePropertyTypes": [],
+  "entityTypes": [
+    {
+      "name": "Location",
+      "plural": "Locations",
+      "adminOnly": false,
+      "table": "LOCATIONS",
+      "entityProperties": [
+      ],
+      "navigationProperties": [
+        {
+          "name": "BhCollarThings",
+          "entitySet": true,
+          "entityType": "BhCollarThing",
+          "required": false,
+          "inverse": {
+            "name": "Locations",
+            "entitySet": true,
+            "required": false,
+            "annotations": []
+          },
+          "handlers": [
+            {
+              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperManyToMany",
+              "field": "ID",
+              "linkTable": "BH_CollarThings_LOCATIONS",
+              "linkOurField": "LOCATION_ID",
+              "linkOtherField": "BH_CollarThing_ID",
+              "otherTable": "BH_CollarThings",
+              "otherField": "ID"
+            }
+          ],
+          "annotations": []
+        },
+        {
+          "name": "BhTrajectoryThings",
+          "entitySet": true,
+          "entityType": "BhTrajectoryThing",
+          "required": false,
+          "inverse": {
+            "name": "Locations",
+            "entitySet": true,
+            "required": false,
+            "annotations": []
+          },
+          "handlers": [
+            {
+              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperManyToMany",
+              "field": "ID",
+              "linkTable": "BH_TrajectoryThings_LOCATIONS",
+              "linkOurField": "LOCATION_ID",
+              "linkOtherField": "BH_TrajectoryThing_ID",
+              "otherTable": "BH_TrajectoryThings",
+              "otherField": "ID"
+            }
+          ],
+          "annotations": []
+        }
+      ],
+      "annotations": []
+    }
+  ]
+}
