@@ -128,7 +128,7 @@
           "name": "BhSampler",
           "entitySet": false,
           "entityType": "BhSampler",
-          "required": true,
+          "required": false,
           "inverse": {
             "name": "BhSamplings",
             "entitySet": true,
@@ -149,7 +149,7 @@
           "name": "BhSamplingProcedure",
           "entitySet": false,
           "entityType": "BhSamplingProcedure",
-          "required": true,
+          "required": false,
           "inverse": {
             "name": "BhSamplings",
             "entitySet": true,
