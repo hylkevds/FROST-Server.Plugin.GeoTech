@@ -91,14 +91,14 @@
         },
         {
           "name": "properties",
-          "type": "Edm.String",
+          "type": "Object",
           "handlers": [
             {
-              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperString",
-              "field": "PROPERTIES"
+              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperJson",
+              "field": "PROPERTIES",
+              "isMap": true
             }
-          ],
-          "annotations": []
+          ]
         }
       ],
       "navigationProperties": [
