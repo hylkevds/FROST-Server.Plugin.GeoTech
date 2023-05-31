@@ -111,7 +111,29 @@
           "annotations": []
         }
       ],
-      "navigationProperties": [],
+      "navigationProperties": [
+        {
+          "name": "BhCollarThing",
+          "entitySet": false,
+          "entityType": "BhCollarThing",
+          "required": true,
+          "inverse": {
+            "name": "BhTrajectoryThings",
+            "entitySet": true,
+            "required": false,
+            "annotations": []
+          },
+          "handlers": [
+            {
+              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperOneToMany",
+              "field": "COLLAR_THING_ID",
+              "otherTable": "BH_CollarThings",
+              "otherField": "ID"
+            }
+          ],
+          "annotations": []
+        }
+      ],
       "annotations": []
     }
   ]

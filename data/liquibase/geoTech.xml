@@ -135,6 +135,9 @@
             <column name="ID" type="BIGINT" defaultValueComputed="nextval('bh_thing_id_seq')">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_trajectorythings" />
             </column>
+            <column name="COLLAR_THING_ID" type="BIGINT">
+                <constraints nullable="false" />
+            </column>
             <column name="DESCRIPTION" type="TEXT" />
             <column name="PROPERTIES" type="JSONB" />
             <column name="NAME" type="TEXT" />
@@ -624,6 +627,11 @@
         <addForeignKeyConstraint constraintName="BH_Samplers_SAMPLING_PROCEDURE_ID_FKEY"
             baseTableName="BH_Samplers" baseColumnNames="SAMPLING_PROCEDURE_ID"
             referencedTableName="BH_SamplingProcedures" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="BH_TrajectoryThings_COLLAR_ID_FKEY"
+            baseTableName="BH_TrajectoryThings" baseColumnNames="COLLAR_THING_ID"
+            referencedTableName="BH_CollarThings" referencedColumnNames="ID"
             deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
 
         <addForeignKeyConstraint constraintName="BH_Samplings_TRAJECTORY_ID_FKEY"
