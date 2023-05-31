@@ -1,0 +1,22 @@
+{
+  "entityTypes": [
+    {
+      "name": "Sensor",
+      "plural": "Sensors",
+      "adminOnly": false,
+      "table": "SENSORS",
+      "entityProperties": [
+        {
+          "name": "sensorType",
+          "type": "Edm.String",
+          "handlers": [
+            {
+              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperString",
+              "field": "SENSOR_TYPE"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

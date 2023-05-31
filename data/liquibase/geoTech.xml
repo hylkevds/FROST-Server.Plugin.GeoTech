@@ -502,6 +502,13 @@
     </changeSet>
 
 
+    <changeSet author="IOSB" id="2023-05-23_Sensor-sensorType" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addColumn tableName="SENSORS">
+            <column name="SENSOR_TYPE" type="TEXT" />
+        </addColumn>
+    </changeSet>
+
+
     <changeSet author="IOSB" id="2023-05-23_Indices" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
         <createIndex tableName="BH_CollarThings_LOCATIONS" indexName="BH_CollarThings_LOCATIONS_BH_CollarThing_ID">
             <column name="BH_CollarThing_ID" />
