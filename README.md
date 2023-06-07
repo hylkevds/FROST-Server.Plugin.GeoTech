@@ -7,7 +7,7 @@ See the [scripts/docker-compose-separated.yaml](scripts/docker-compose-separated
 
 ## Data Model
 
-![Data Model](STA_OMS.png)
+![Data Model](Datamodel-SensorThingsApi-GeoTech.drawio.png)
 
 ## Demo Service
 
