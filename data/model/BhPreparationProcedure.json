@@ -67,29 +67,7 @@
           ]
         }
       ],
-      "navigationProperties": [
-        {
-          "name": "BhPreparationStep",
-          "entitySet": false,
-          "entityType": "BhPreparationStep",
-          "required": true,
-          "inverse": {
-            "name": "BhPreparationProcedures",
-            "entitySet": true,
-            "required": false,
-            "annotations": []
-          },
-          "handlers": [
-            {
-              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperOneToMany",
-              "field": "PREPARATION_STEP_ID",
-              "otherTable": "BH_PreparationStep",
-              "otherField": "ID"
-            }
-          ],
-          "annotations": []
-        }
-      ],
+      "navigationProperties": [],
       "annotations": []
     }
   ]

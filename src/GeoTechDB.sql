@@ -5,6 +5,8 @@
 -- Dumped from database version 12.10 (Debian 12.10-1.pgdg90+1)
 -- Dumped by pg_dump version 12.10 (Debian 12.10-1.pgdg90+1)
 
+-- drop table "BH_CollarThings", "BH_CollarThings_LOCATIONS", "BH_CoreFoITypes", "BH_CoreFoIs", "BH_CorePointFoITypes", "BH_CorePointFoIs", "BH_CoreSegmentFoITypes", "BH_CoreSegmentFoIs", "BH_HoleFoITypes", "BH_HoleFoIs", "BH_HolePointFoITypes", "BH_HolePointFoIs", "BH_HoleSegmentFoITypes", "BH_HoleSegmentFoIs", "BH_PreparationProcedure", "BH_PreparationStep", "BH_Samplers", "BH_SamplingProcedures", "BH_Samplings", "BH_TrajectoryThings", "BH_TrajectoryThings_LOCATIONS", "BH_ass_related_datastream", "BH_ass_related_observation", "DATASTREAMS", "HIST_LOCATIONS", "LOCATIONS", "LOCATIONS_HIST_LOCATIONS", "OBSERVATIONS", "OBS_PROPERTIES", "SENSORS", "databasechangelog", "databasechangeloglock" cascade;
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
