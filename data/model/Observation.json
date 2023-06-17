@@ -141,12 +141,7 @@
           "entitySet": true,
           "entityType": "Observation",
           "required": false,
-          "inverse": {
-            "name": "ObservationsRelated",
-            "entitySet": true,
-            "required": false,
-            "annotations": []
-          },
+          "symmetrical": true,
           "handlers": [
             {
               "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperManyToMany",
