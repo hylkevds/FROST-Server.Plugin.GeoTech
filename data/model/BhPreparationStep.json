@@ -104,7 +104,7 @@
           "name": "BhCoreFoi",
           "entitySet": false,
           "entityType": "BhCoreFoi",
-          "required": true,
+          "required": false,
           "inverse": {
             "name": "BhPreparationSteps",
             "entitySet": true,
@@ -125,7 +125,7 @@
           "name": "BhCorePointFoi",
           "entitySet": false,
           "entityType": "BhCorePointFoi",
-          "required": true,
+          "required": false,
           "inverse": {
             "name": "BhPreparationSteps",
             "entitySet": true,
@@ -146,7 +146,7 @@
           "name": "BhCoreSegmentFoi",
           "entitySet": false,
           "entityType": "BhCoreSegmentFoi",
-          "required": true,
+          "required": false,
           "inverse": {
             "name": "BhPreparationSteps",
             "entitySet": true,
@@ -167,7 +167,7 @@
           "name": "BhHoleFoi",
           "entitySet": false,
           "entityType": "BhHoleFoi",
-          "required": true,
+          "required": false,
           "inverse": {
             "name": "BhPreparationSteps",
             "entitySet": true,
@@ -188,7 +188,7 @@
           "name": "BhHolePointFoi",
           "entitySet": false,
           "entityType": "BhHolePointFoi",
-          "required": true,
+          "required": false,
           "inverse": {
             "name": "BhPreparationSteps",
             "entitySet": true,
@@ -209,7 +209,7 @@
           "name": "BhHoleSegmentFoi",
           "entitySet": false,
           "entityType": "BhHoleSegmentFoi",
-          "required": true,
+          "required": false,
           "inverse": {
             "name": "BhPreparationSteps",
             "entitySet": true,
