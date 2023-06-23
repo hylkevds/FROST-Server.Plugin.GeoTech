@@ -75,7 +75,8 @@
               "field": "PARAMETER",
               "isMap": true
             }
-          ]
+          ],
+          "annotations": []
         },
         {
           "name": "positionUom",
@@ -129,6 +130,7 @@
           "entitySet": false,
           "entityType": "BhSampler",
           "required": false,
+          "symmetrical": false,
           "inverse": {
             "name": "BhSamplings",
             "entitySet": true,
@@ -150,6 +152,7 @@
           "entitySet": false,
           "entityType": "BhSamplingProcedure",
           "required": false,
+          "symmetrical": false,
           "inverse": {
             "name": "BhSamplings",
             "entitySet": true,
@@ -171,6 +174,7 @@
           "entitySet": false,
           "entityType": "BhTrajectoryThing",
           "required": true,
+          "symmetrical": false,
           "inverse": {
             "name": "BhSamplings",
             "entitySet": true,

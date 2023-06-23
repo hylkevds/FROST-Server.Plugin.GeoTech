@@ -507,10 +507,65 @@
             }
         },
         {
+            "id": "BhFoiTypeHole",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhFeatureTypes",
+            "body": {
+                "name": "Hole",
+                "description": "A Sample from a Borehole-Hole",
+                "definition": "https://ogc.org/Hole"
+            }
+        },
+        {
+            "id": "BhFoiTypeCore",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhFeatureTypes",
+            "body": {
+                "name": "Core",
+                "description": "A Sample from a Borehole-Core",
+                "definition": "https://ogc.org/Core"
+            }
+        },
+        {
+            "id": "BhFoiTypePoint",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhFeatureTypes",
+            "body": {
+                "name": "Point",
+                "description": "A Sample taken at a Point",
+                "definition": "https://ogc.org/Point"
+            }
+        },
+        {
+            "id": "BhFoiTypeSegment",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhFeatureTypes",
+            "body": {
+                "name": "Segment",
+                "description": "A Sample taken as a Segment",
+                "definition": "https://ogc.org/Segment"
+            }
+        },
+        {
+            "id": "BhFoiTypeEntire",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhFeatureTypes",
+            "body": {
+                "name": "Entirety",
+                "description": "A Sample taken from the Entirety",
+                "definition": "https://ogc.org/Entirety"
+            }
+        },
+        {
             "id": "BhHoleFOI",
             "atomicityGroup": "group1",
             "method": "post",
-            "url": "BhHoleFois",
+            "url": "BhFeaturesOfInterest",
             "body": {
                 "name": "HoleFOI",
                 "description": "The HoleFOI",
@@ -525,17 +580,19 @@
                 "BhSampling": {
                     "@iot.id": "$SamplingHole"
                 },
-                "properties": {
-                    "length": 10,
-                    "length_uom": "m"
-                }
+                "BhFeatureTypes": [
+                    {"@iot.id": "$BhFoiTypeHole"},
+                    {"@iot.id": "$BhFoiTypeEntire"}
+                ],
+                "length": 10,
+                "lengthUom": "m"
             }
         },
         {
             "id": "BhHolePointFOI",
             "atomicityGroup": "group1",
             "method": "post",
-            "url": "BhHolePointFois",
+            "url": "BhFeaturesOfInterest",
             "body": {
                 "name": "HolePointFOI",
                 "description": "The HolePointFOI",
@@ -550,20 +607,20 @@
                 "BhSampling": {
                     "@iot.id": "$SamplingHolePoint"
                 },
-                "BhHoleFoi": {
+                "BhSampledFeature": {
                     "@iot.id": "$BhHoleFOI"
                 },
-                "properties": {
-                    "length": 10,
-                    "length_uom": "m"
-                }
+                "BhFeatureTypes": [
+                    {"@iot.id": "$BhFoiTypeHole"},
+                    {"@iot.id": "$BhFoiTypePoint"}
+                ]
             }
         },
         {
             "id": "BhHoleSegmentFOI",
             "atomicityGroup": "group1",
             "method": "post",
-            "url": "BhHoleSegmentFois",
+            "url": "BhFeaturesOfInterest",
             "body": {
                 "name": "HoleSegmentFOI",
                 "description": "The HoleSegmentFOI",
@@ -578,20 +635,22 @@
                 "BhSampling": {
                     "@iot.id": "$SamplingHoleSegment"
                 },
-                "BhHoleFoi": {
+                "BhSampledFeature": {
                     "@iot.id": "$BhHoleFOI"
                 },
-                "properties": {
-                    "length": 10,
-                    "length_uom": "m"
-                }
+                "BhFeatureTypes": [
+                    {"@iot.id": "$BhFoiTypeHole"},
+                    {"@iot.id": "$BhFoiTypeSegment"}
+                ],
+                "length": 10,
+                "lengthUom": "m"
             }
         },
         {
             "id": "BhCoreFOI",
             "atomicityGroup": "group1",
             "method": "post",
-            "url": "BhCoreFois",
+            "url": "BhFeaturesOfInterest",
             "body": {
                 "name": "CoreFOI",
                 "description": "The CoreFOI",
@@ -606,17 +665,19 @@
                 "BhSampling": {
                     "@iot.id": "$SamplingCore"
                 },
-                "properties": {
-                    "length": 10,
-                    "length_uom": "m"
-                }
+                "BhFeatureTypes": [
+                    {"@iot.id": "$BhFoiTypeCore"},
+                    {"@iot.id": "$BhFoiTypeEntire"}
+                ],
+                "length": 10,
+                "lengthUom": "m"
             }
         },
         {
             "id": "BhCorePointFOI",
             "atomicityGroup": "group1",
             "method": "post",
-            "url": "BhCorePointFois",
+            "url": "BhFeaturesOfInterest",
             "body": {
                 "name": "CorePointFOI",
                 "description": "The CorePointFOI",
@@ -631,20 +692,20 @@
                 "BhSampling": {
                     "@iot.id": "$SamplingCorePoint"
                 },
-                "BhCoreFoi": {
+                "BhSampledFeature": {
                     "@iot.id": "$BhCoreFOI"
                 },
-                "properties": {
-                    "length": 10,
-                    "length_uom": "m"
-                }
+                "BhFeatureTypes": [
+                    {"@iot.id": "$BhFoiTypeCore"},
+                    {"@iot.id": "$BhFoiTypePoint"}
+                ]
             }
         },
         {
             "id": "BhCoreSegmentFOI",
             "atomicityGroup": "group1",
             "method": "post",
-            "url": "BhCoreSegmentFois",
+            "url": "BhFeaturesOfInterest",
             "body": {
                 "name": "CoreSegmentFOI",
                 "description": "The CoreSegmentFOI",
@@ -659,133 +720,15 @@
                 "BhSampling": {
                     "@iot.id": "$SamplingCoreSegment"
                 },
-                "BhCoreFoi": {
+                "BhSampledFeature": {
                     "@iot.id": "$BhCoreFOI"
                 },
-                "properties": {
-                    "length": 10,
-                    "length_uom": "m"
-                }
-            }
-        },
-        {
-            "id": "BhCoreFoiType",
-            "atomicityGroup": "group1",
-            "method": "post",
-            "url": "BhCoreFoiTypes",
-            "body": {
-                "foiType": "Core",
-                "BhCoreFoi": {
-                    "@iot.id": "$BhCoreFOI"
-                }
-            }
-        },
-        {
-            "id": "BhCorePointFoiType-Core",
-            "atomicityGroup": "group1",
-            "method": "post",
-            "url": "BhCorePointFoiTypes",
-            "body": {
-                "foiType": "Core",
-                "BhCorePointFoi": {
-                    "@iot.id": "$BhCorePointFOI"
-                }
-            }
-        },
-        {
-            "id": "BhCorePointFoiType-Point",
-            "atomicityGroup": "group1",
-            "method": "post",
-            "url": "BhCorePointFoiTypes",
-            "body": {
-                "foiType": "Point",
-                "BhCorePointFoi": {
-                    "@iot.id": "$BhCorePointFOI"
-                }
-            }
-        },
-        {
-            "id": "BhCoreSegmentFoiType-Core",
-            "atomicityGroup": "group1",
-            "method": "post",
-            "url": "BhCoreSegmentFoiTypes",
-            "body": {
-                "foiType": "Core",
-                "BhCoreSegmentFoi": {
-                    "@iot.id": "$BhCoreSegmentFOI"
-                }
-            }
-        },
-        {
-            "id": "BhCoreSegmentFoiType-Segment",
-            "atomicityGroup": "group1",
-            "method": "post",
-            "url": "BhCoreSegmentFoiTypes",
-            "body": {
-                "foiType": "Segment",
-                "BhCoreSegmentFoi": {
-                    "@iot.id": "$BhCoreSegmentFOI"
-                }
-            }
-        },
-        {
-            "id": "BhHoleFoiType",
-            "atomicityGroup": "group1",
-            "method": "post",
-            "url": "BhHoleFoiTypes",
-            "body": {
-                "foiType": "Hole",
-                "BhHoleFoi": {
-                    "@iot.id": "$BhHoleFOI"
-                }
-            }
-        },
-        {
-            "id": "BhHolePointFoiType-Hole",
-            "atomicityGroup": "group1",
-            "method": "post",
-            "url": "BhHolePointFoiTypes",
-            "body": {
-                "foiType": "Hole",
-                "BhHolePointFoi": {
-                    "@iot.id": "$BhHolePointFOI"
-                }
-            }
-        },
-        {
-            "id": "BhHolePointFoiType-Point",
-            "atomicityGroup": "group1",
-            "method": "post",
-            "url": "BhHolePointFoiTypes",
-            "body": {
-                "foiType": "Point",
-                "BhHolePointFoi": {
-                    "@iot.id": "$BhHolePointFOI"
-                }
-            }
-        },
-        {
-            "id": "BhHoleSegmentFoiType-Hole",
-            "atomicityGroup": "group1",
-            "method": "post",
-            "url": "BhHoleSegmentFoiTypes",
-            "body": {
-                "foiType": "Hole",
-                "BhHoleSegmentFoi": {
-                    "@iot.id": "$BhHoleSegmentFOI"
-                }
-            }
-        },
-        {
-            "id": "BhHoleSegmentFoiType-Segment",
-            "atomicityGroup": "group1",
-            "method": "post",
-            "url": "BhHoleSegmentFoiTypes",
-            "body": {
-                "foiType": "Segment",
-                "BhHoleSegmentFoi": {
-                    "@iot.id": "$BhHoleSegmentFOI"
-                }
+                "BhFeatureTypes": [
+                    {"@iot.id": "$BhFoiTypeCore"},
+                    {"@iot.id": "$BhFoiTypeSegment"}
+                ],
+                "length": 10,
+                "lengthUom": "m"
             }
         },
         {
@@ -911,7 +854,7 @@
                 "BhPreparationProcedure": {
                     "@iot.id": "$BhPreparationProcedure"
                 },
-                "BhCoreFoi": {
+                "BhFeatureOfInterest": {
                     "@iot.id": "$BhCoreFOI"
                 },
                 "properties": {}

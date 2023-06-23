@@ -64,7 +64,8 @@
               "field": "PROPERTIES",
               "isMap": true
             }
-          ]
+          ],
+          "annotations": []
         },
         {
           "name": "time",
@@ -84,6 +85,7 @@
           "entitySet": false,
           "entityType": "BhPreparationProcedure",
           "required": false,
+          "symmetrical": false,
           "inverse": {
             "name": "BhPreparationSteps",
             "entitySet": true,
@@ -101,10 +103,11 @@
           "annotations": []
         },
         {
-          "name": "BhCoreFoi",
+          "name": "BhFeatureOfInterest",
           "entitySet": false,
-          "entityType": "BhCoreFoi",
-          "required": false,
+          "entityType": "BhFeatureOfInterest",
+          "required": true,
+          "symmetrical": false,
           "inverse": {
             "name": "BhPreparationSteps",
             "entitySet": true,
@@ -114,113 +117,8 @@
           "handlers": [
             {
               "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperOneToMany",
-              "field": "CORE_FOI_ID",
-              "otherTable": "BH_CoreFoIs",
-              "otherField": "ID"
-            }
-          ],
-          "annotations": []
-        },
-        {
-          "name": "BhCorePointFoi",
-          "entitySet": false,
-          "entityType": "BhCorePointFoi",
-          "required": false,
-          "inverse": {
-            "name": "BhPreparationSteps",
-            "entitySet": true,
-            "required": false,
-            "annotations": []
-          },
-          "handlers": [
-            {
-              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperOneToMany",
-              "field": "CORE_POINT_FOI_ID",
-              "otherTable": "BH_CorePointFoIs",
-              "otherField": "ID"
-            }
-          ],
-          "annotations": []
-        },
-        {
-          "name": "BhCoreSegmentFoi",
-          "entitySet": false,
-          "entityType": "BhCoreSegmentFoi",
-          "required": false,
-          "inverse": {
-            "name": "BhPreparationSteps",
-            "entitySet": true,
-            "required": false,
-            "annotations": []
-          },
-          "handlers": [
-            {
-              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperOneToMany",
-              "field": "CORE_SEGMENT_FOI_ID",
-              "otherTable": "BH_CoreSegmentFoIs",
-              "otherField": "ID"
-            }
-          ],
-          "annotations": []
-        },
-        {
-          "name": "BhHoleFoi",
-          "entitySet": false,
-          "entityType": "BhHoleFoi",
-          "required": false,
-          "inverse": {
-            "name": "BhPreparationSteps",
-            "entitySet": true,
-            "required": false,
-            "annotations": []
-          },
-          "handlers": [
-            {
-              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperOneToMany",
-              "field": "HOLE_FOI_ID",
-              "otherTable": "BH_HoleFoIs",
-              "otherField": "ID"
-            }
-          ],
-          "annotations": []
-        },
-        {
-          "name": "BhHolePointFoi",
-          "entitySet": false,
-          "entityType": "BhHolePointFoi",
-          "required": false,
-          "inverse": {
-            "name": "BhPreparationSteps",
-            "entitySet": true,
-            "required": false,
-            "annotations": []
-          },
-          "handlers": [
-            {
-              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperOneToMany",
-              "field": "HOLE_POINT_FOI_ID",
-              "otherTable": "BH_HolePointFoIs",
-              "otherField": "ID"
-            }
-          ],
-          "annotations": []
-        },
-        {
-          "name": "BhHoleSegmentFoi",
-          "entitySet": false,
-          "entityType": "BhHoleSegmentFoi",
-          "required": false,
-          "inverse": {
-            "name": "BhPreparationSteps",
-            "entitySet": true,
-            "required": false,
-            "annotations": []
-          },
-          "handlers": [
-            {
-              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperOneToMany",
-              "field": "HOLE_SEGMENT_FOI_ID",
-              "otherTable": "BH_HoleSegmentFoIs",
+              "field": "FOI_ID",
+              "otherTable": "BH_Features",
               "otherField": "ID"
             }
           ],

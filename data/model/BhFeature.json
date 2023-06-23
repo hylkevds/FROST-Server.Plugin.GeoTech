@@ -3,10 +3,10 @@
   "simplePropertyTypes": [],
   "entityTypes": [
     {
-      "name": "BhCoreFoi",
-      "plural": "BhCoreFois",
+      "name": "BhFeatureOfInterest",
+      "plural": "BhFeaturesOfInterest",
       "adminOnly": false,
-      "table": "BH_CoreFoIs",
+      "table": "BH_Features",
       "entityProperties": [
         {
           "name": "id",
@@ -98,17 +98,52 @@
               "field": "PROPERTIES",
               "isMap": true
             }
-          ]
+          ],
+          "annotations": []
+        },
+        {
+          "name": "recoveryPercentage",
+          "type": "Edm.Decimal",
+          "handlers": [
+            {
+              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperBigDecimal",
+              "field": "RECOVERY_PERCENTAGE"
+            }
+          ],
+          "annotations": []
         }
       ],
       "navigationProperties": [
         {
+          "name": "BhSampledFeature",
+          "entitySet": false,
+          "entityType": "BhFeatureOfInterest",
+          "required": false,
+          "symmetrical": false,
+          "inverse": {
+            "name": "BhSamples",
+            "entitySet": true,
+            "required": false,
+            "annotations": []
+          },
+          "handlers": [
+            {
+              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperOneToMany",
+              "field": "SAMPLED_FEATURE_ID",
+              "otherTable": "BH_Features",
+              "otherField": "ID"
+            }
+          ],
+          "annotations": []
+        },
+        {
           "name": "BhSampling",
           "entitySet": false,
           "entityType": "BhSampling",
-          "required": true,
+          "required": false,
+          "symmetrical": false,
           "inverse": {
-            "name": "BhCoreFois",
+            "name": "BhSample",
             "entitySet": true,
             "required": false,
             "annotations": []
@@ -118,6 +153,31 @@
               "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperOneToMany",
               "field": "SAMPLING_ID",
               "otherTable": "BH_Samplings",
+              "otherField": "ID"
+            }
+          ],
+          "annotations": []
+        },
+        {
+          "name": "RelatedFeatures",
+          "entitySet": true,
+          "entityType": "BhFeatureOfInterest",
+          "required": false,
+          "symmetrical": true,
+          "inverse": {
+            "name": "",
+            "entitySet": false,
+            "required": false,
+            "annotations": []
+          },
+          "handlers": [
+            {
+              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperManyToMany",
+              "field": "ID",
+              "linkTable": "BH_ass_related_feature",
+              "linkOurField": "feature_id",
+              "linkOtherField": "related_feature_id",
+              "otherTable": "BH_Features",
               "otherField": "ID"
             }
           ],

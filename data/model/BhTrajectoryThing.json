@@ -97,7 +97,8 @@
               "field": "PROPERTIES",
               "isMap": true
             }
-          ]
+          ],
+          "annotations": []
         },
         {
           "name": "uom",
@@ -117,6 +118,7 @@
           "entitySet": false,
           "entityType": "BhCollarThing",
           "required": true,
+          "symmetrical": false,
           "inverse": {
             "name": "BhTrajectoryThings",
             "entitySet": true,

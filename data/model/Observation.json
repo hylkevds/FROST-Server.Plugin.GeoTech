@@ -11,10 +11,11 @@
       ],
       "navigationProperties": [
         {
-          "name": "BhCoreFoi",
+          "name": "BhFeatureOfInterest",
           "entitySet": false,
-          "entityType": "BhCoreFoi",
+          "entityType": "BhFeatureOfInterest",
           "required": false,
+          "symmetrical": false,
           "inverse": {
             "name": "Observations",
             "entitySet": true,
@@ -25,112 +26,7 @@
             {
               "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperOneToMany",
               "field": "FEATURE_ID",
-              "otherTable": "BH_CoreFoIs",
-              "otherField": "ID"
-            }
-          ],
-          "annotations": []
-        },
-        {
-          "name": "BhCorePointFoi",
-          "entitySet": false,
-          "entityType": "BhCorePointFoi",
-          "required": false,
-          "inverse": {
-            "name": "Observations",
-            "entitySet": true,
-            "required": false,
-            "annotations": []
-          },
-          "handlers": [
-            {
-              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperOneToMany",
-              "field": "FEATURE_ID",
-              "otherTable": "BH_CorePointFoIs",
-              "otherField": "ID"
-            }
-          ],
-          "annotations": []
-        },
-        {
-          "name": "BhCoreSegmentFoi",
-          "entitySet": false,
-          "entityType": "BhCoreSegmentFoi",
-          "required": false,
-          "inverse": {
-            "name": "Observations",
-            "entitySet": true,
-            "required": false,
-            "annotations": []
-          },
-          "handlers": [
-            {
-              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperOneToMany",
-              "field": "FEATURE_ID",
-              "otherTable": "BH_CoreSegmentFoIs",
-              "otherField": "ID"
-            }
-          ],
-          "annotations": []
-        },
-        {
-          "name": "BhHoleFoi",
-          "entitySet": false,
-          "entityType": "BhHoleFoi",
-          "required": false,
-          "inverse": {
-            "name": "Observations",
-            "entitySet": true,
-            "required": false,
-            "annotations": []
-          },
-          "handlers": [
-            {
-              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperOneToMany",
-              "field": "FEATURE_ID",
-              "otherTable": "BH_HoleFoIs",
-              "otherField": "ID"
-            }
-          ],
-          "annotations": []
-        },
-        {
-          "name": "BhHolePointFoi",
-          "entitySet": false,
-          "entityType": "BhHolePointFoi",
-          "required": false,
-          "inverse": {
-            "name": "Observations",
-            "entitySet": true,
-            "required": false,
-            "annotations": []
-          },
-          "handlers": [
-            {
-              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperOneToMany",
-              "field": "FEATURE_ID",
-              "otherTable": "BH_HolePointFoIs",
-              "otherField": "ID"
-            }
-          ],
-          "annotations": []
-        },
-        {
-          "name": "BhHoleSegmentFoi",
-          "entitySet": false,
-          "entityType": "BhHoleSegmentFoi",
-          "required": false,
-          "inverse": {
-            "name": "Observations",
-            "entitySet": true,
-            "required": false,
-            "annotations": []
-          },
-          "handlers": [
-            {
-              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperOneToMany",
-              "field": "FEATURE_ID",
-              "otherTable": "BH_HoleSegmentFoIs",
+              "otherTable": "BH_Features",
               "otherField": "ID"
             }
           ],

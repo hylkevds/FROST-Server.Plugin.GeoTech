@@ -64,7 +64,8 @@
               "field": "PROPERTIES",
               "isMap": true
             }
-          ]
+          ],
+          "annotations": []
         }
       ],
       "navigationProperties": [],

@@ -64,7 +64,8 @@
               "field": "PROPERTIES",
               "isMap": true
             }
-          ]
+          ],
+          "annotations": []
         },
         {
           "name": "samplerType",
@@ -84,6 +85,7 @@
           "entitySet": false,
           "entityType": "BhSamplingProcedure",
           "required": false,
+          "symmetrical": false,
           "inverse": {
             "name": "BhSamplers",
             "entitySet": true,
