@@ -103,11 +103,12 @@
         },
         {
           "name": "time",
-          "type": "TimeInstant",
+          "type": "TimeValue",
           "handlers": [
             {
-              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperTimeInstant",
-              "field": "TIME"
+              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperTimeValue",
+              "fieldStart": "TIME_START",
+              "fieldEnd": "TIME_END"
             }
           ],
           "annotations": []

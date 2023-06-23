@@ -87,7 +87,8 @@
             <column name="NAME" type="TEXT" />
             <column name="DESCRIPTION" type="TEXT" />
             <column name="SAMPLING_LOCATION" type="GEOMETRY" />
-            <column name="TIME" type="TIMESTAMP WITH TIME ZONE" />
+            <column name="TIME_START" type="TIMESTAMP WITH TIME ZONE" />
+            <column name="TIME_END" type="TIMESTAMP WITH TIME ZONE" />
             <column name="TRAJECTORY_ID" type="BIGINT" />
             <column name="SAMPLING_PROCEDURE_ID" type="BIGINT" />
             <column name="SAMPLER_ID" type="BIGINT" />
