@@ -393,6 +393,29 @@
             deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
     </changeSet>
 
+    <changeSet author="IOSB" id="2023-06-29_SampledFeatures" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <dropForeignKeyConstraint baseTableName="BH_Features" constraintName="BH_Features_SAMPLED_FEATURE_ID_FKEY" />
+        <dropColumn tableName="BH_Features" columnName="SAMPLED_FEATURE_ID"></dropColumn>
+
+        <createTable tableName="BH_ass_sampledfeatures">
+            <column name="sample_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_sampled_features" />
+            </column>
+            <column name="sampled_feature_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_sampled_features" />
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint constraintName="bh_ass_sampledfeatures_sample_id_fkey"
+            baseTableName="BH_ass_sampledfeatures" baseColumnNames="sample_id"
+            referencedTableName="BH_Features" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+        <addForeignKeyConstraint constraintName="bh_ass_sampledfeatures_sampled_feature_id_fkey"
+            baseTableName="BH_ass_sampledfeatures" baseColumnNames="sampled_feature_id"
+            referencedTableName="BH_Features" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+    </changeSet>
+
     <changeSet author="scf" id="viewThings.sql" runOnChange="true" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
         <sqlFile dbms="postgresql" endDelimiter="/" stripComments="false" splitStatements="false" path="viewThings.sql" relativeToChangelogFile="true" encoding="utf8"/>
     </changeSet>

@@ -607,9 +607,9 @@
                 "BhSampling": {
                     "@iot.id": "$SamplingHolePoint"
                 },
-                "BhSampledFeature": {
+                "BhSampledFeatures": [{
                     "@iot.id": "$BhHoleFOI"
-                },
+                }],
                 "BhFeatureTypes": [
                     {"@iot.id": "$BhFoiTypeHole"},
                     {"@iot.id": "$BhFoiTypePoint"}
@@ -635,9 +635,9 @@
                 "BhSampling": {
                     "@iot.id": "$SamplingHoleSegment"
                 },
-                "BhSampledFeature": {
+                "BhSampledFeatures": [{
                     "@iot.id": "$BhHoleFOI"
-                },
+                }],
                 "BhFeatureTypes": [
                     {"@iot.id": "$BhFoiTypeHole"},
                     {"@iot.id": "$BhFoiTypeSegment"}
@@ -692,9 +692,9 @@
                 "BhSampling": {
                     "@iot.id": "$SamplingCorePoint"
                 },
-                "BhSampledFeature": {
+                "BhSampledFeatures": [{
                     "@iot.id": "$BhCoreFOI"
-                },
+                }],
                 "BhFeatureTypes": [
                     {"@iot.id": "$BhFoiTypeCore"},
                     {"@iot.id": "$BhFoiTypePoint"}
@@ -720,9 +720,9 @@
                 "BhSampling": {
                     "@iot.id": "$SamplingCoreSegment"
                 },
-                "BhSampledFeature": {
+                "BhSampledFeatures": [{
                     "@iot.id": "$BhCoreFOI"
-                },
+                }],
                 "BhFeatureTypes": [
                     {"@iot.id": "$BhFoiTypeCore"},
                     {"@iot.id": "$BhFoiTypeSegment"}
