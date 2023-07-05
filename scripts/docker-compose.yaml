@@ -15,6 +15,16 @@ services:
       - persistence_db_username=sensorthings
       - persistence_db_password=ChangeMe
       - persistence_autoUpdateDatabase=true
+      - auth_provider=de.fraunhofer.iosb.ilt.frostserver.auth.basic.BasicAuthProvider
+      - auth_allowAnonymousRead=false
+      - auth_authenticateOnly=true
+      - auth_realmName=FROST-Server
+      - auth_db_driver=org.postgresql.Driver
+      - auth_db_url=jdbc:postgresql://geotech_database:5432/sensorthings
+      - auth_db_username=sensorthings
+      - auth_db_password=ChangeMe
+      - auth_autoUpdateDatabase=true
+      - auth_plainTextPassword=false
       - FROST_LL=debug
       - FROST_LL_service=debug
 
