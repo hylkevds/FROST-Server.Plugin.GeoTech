@@ -45,6 +45,16 @@
           "annotations": []
         },
         {
+          "name": "public",
+          "type": "Edm.Boolean",
+          "handlers": [
+            {
+              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperBoolean",
+              "field": "ISPUBLIC"
+            }
+          ]
+        },
+        {
           "name": "properties",
           "type": "Object",
           "handlers": [

@@ -1,6 +1,135 @@
 {
     "requests": [
         {
+            "id": "Project1",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "Projects",
+            "body": {
+                "name": "Project One",
+                "description": "A project that is public, for all to see.",
+                "public": true,
+                "properties": {}
+            }
+        },
+        {
+            "id": "Project2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "Projects",
+            "body": {
+                "name": "Project Two",
+                "description": "A project that is not public. If you can see this, you're special!",
+                "public": false,
+                "properties": {}
+            }
+        },
+        {
+            "id": "UserBob",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "Users",
+            "body": {
+                "username": "Bob",
+                "userpass": "Bob",
+                "UserProjectRoles": [
+                    {"Role": {"rolename": "read"}, "Project": {"id": "$Project1"}},
+                    {"Role": {"rolename": "create"}, "Project": {"id": "$Project1"}},
+                    {"Role": {"rolename": "update"}, "Project": {"id": "$Project1"}},
+                    {"Role": {"rolename": "delete"}, "Project": {"id": "$Project1"}},
+                    {"Role": {"rolename": "admin"}, "Project": {"id": "$Project1"}}
+                ]
+            }
+        },
+        {
+            "id": "UserMary",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "Users",
+            "body": {
+                "username": "Mary",
+                "userpass": "Mary",
+                "UserProjectRoles": [
+                    {"Role": {"rolename": "read"}, "Project": {"id": "$Project1"}},
+                    {"Role": {"rolename": "create"}, "Project": {"id": "$Project1"}},
+                    {"Role": {"rolename": "update"}, "Project": {"id": "$Project1"}},
+                    {"Role": {"rolename": "delete"}, "Project": {"id": "$Project1"}},
+                    {"Role": {"rolename": "read"}, "Project": {"id": "$Project2"}},
+                    {"Role": {"rolename": "create"}, "Project": {"id": "$Project2"}},
+                    {"Role": {"rolename": "update"}, "Project": {"id": "$Project2"}},
+                    {"Role": {"rolename": "delete"}, "Project": {"id": "$Project2"}},
+                    {"Role": {"rolename": "admin"}, "Project": {"id": "$Project2"}}
+                ]
+            }
+        },
+        {
+            "id": "UserSam",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "Users",
+            "body": {
+                "username": "Sam",
+                "userpass": "Sam",
+                "UserProjectRoles": [
+                    {"Role": {"rolename": "read"}, "Project": {"id": "$Project1"}},
+                    {"Role": {"rolename": "read"}, "Project": {"id": "$Project2"}},
+                    {"Role": {"rolename": "create"}, "Project": {"id": "$Project2"}},
+                    {"Role": {"rolename": "update"}, "Project": {"id": "$Project2"}},
+                    {"Role": {"rolename": "delete"}, "Project": {"id": "$Project2"}}
+                ]
+            }
+        },
+        {
+            "id": "UserKevin",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "Users",
+            "body": {
+                "username": "Kevin",
+                "userpass": "Kevin",
+                "UserProjectRoles": [
+                    {"Role": {"rolename": "read"}, "Project": {"id": "$Project2"}}
+                ]
+            }
+        },
+        {
+            "id": "UserJohn",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "Users",
+            "body": {
+                "username": "John",
+                "userpass": "John",
+                "Roles": [
+                    {"rolename": "admin"},
+                    {"rolename": "read"},
+                    {"rolename": "create"},
+                    {"rolename": "update"},
+                    {"rolename": "delete"}
+                ]
+            }
+        },
+        {
+            "id": "UserDavid",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "Users",
+            "body": {
+                "username": "David",
+                "userpass": "David",
+                "Roles": [
+                    {"rolename": "read"},
+                    {"rolename": "create"},
+                    {"rolename": "update"},
+                    {"rolename": "delete"}
+                ]
+            }
+        },
+
+
+
+
+        {
             "id": "ObservedProperty1",
             "atomicityGroup": "group1",
             "method": "post",
@@ -10,20 +139,6 @@
                 "definition": "U2-U0",
                 "description": "U2-U0",
                 "properties": {}
-            }
-        },
-        {
-            "id": "Sensor1",
-            "atomicityGroup": "group1",
-            "method": "post",
-            "url": "Sensors",
-            "body": {
-                "name": "CPT TestXXX",
-                "description": "https://en.wikipedia.org/wiki/Cone_penetration_test",
-                "encodingType": "application/pdf",
-                "metadata": "https://en.wikipedia.org/wiki/Cone_penetration_test",
-                "properties": {},
-                "sensorType": "https://data.geoscience.fr/ncl/Proc/86"
             }
         },
         {
@@ -38,6 +153,25 @@
                 "properties": {}
             }
         },
+
+
+
+
+        {
+            "id": "Sensor1",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "Sensors",
+            "body": {
+                "name": "CPT TestXXX",
+                "description": "https://en.wikipedia.org/wiki/Cone_penetration_test",
+                "encodingType": "application/pdf",
+                "metadata": "https://en.wikipedia.org/wiki/Cone_penetration_test",
+                "properties": {},
+                "sensorType": "https://data.geoscience.fr/ncl/Proc/86",
+                "Projects": [{"id": "$Project1"}]
+            }
+        },
         {
             "id": "Sensor2",
             "atomicityGroup": "group1",
@@ -49,7 +183,8 @@
                 "encodingType": "application/pdf",
                 "metadata": "https://en.wikipedia.org/wiki/Cone_penetration_test",
                 "properties": {},
-                "sensorType": "https://data.geoscience.fr/ncl/Proc/86"
+                "sensorType": "https://data.geoscience.fr/ncl/Proc/86",
+                "Projects": [{"id": "$Project1"}]
             }
         },
         {
@@ -60,7 +195,8 @@
             "body": {
                 "name": "TestCollar1",
                 "description": "TestCollar1X",
-                "properties": {}
+                "properties": {},
+                "Projects": [{"id": "$Project1"}]
             }
         },
         {
@@ -103,7 +239,8 @@
                 "BhCollarThing": {
                     "@iot.id": "$Collar1"
                 },
-                "properties": {}
+                "properties": {},
+                "Projects": [{"id": "$Project1"}]
             }
         },
         {
@@ -562,6 +699,17 @@
             }
         },
         {
+            "id": "BhFoiTypeSpecimen",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhFeatureTypes",
+            "body": {
+                "name": "Specimen",
+                "description": "A Specimen",
+                "definition": "https://ogc.org/Specimen"
+            }
+        },
+        {
             "id": "BhHoleFOI",
             "atomicityGroup": "group1",
             "method": "post",
@@ -859,6 +1007,797 @@
                 },
                 "properties": {}
             }
+        },
+
+
+
+
+
+        {
+            "id": "Sensor3",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "Sensors",
+            "body": {
+                "name": "CPT 3 TestXXX",
+                "description": "https://en.wikipedia.org/wiki/Cone_penetration_test",
+                "encodingType": "application/pdf",
+                "metadata": "https://en.wikipedia.org/wiki/Cone_penetration_test",
+                "properties": {},
+                "sensorType": "https://data.geoscience.fr/ncl/Proc/86",
+                "Projects": [{"id": "$Project2"}]
+            }
+        },
+        {
+            "id": "Sensor4",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "Sensors",
+            "body": {
+                "name": "CPT 4 TestYYY",
+                "description": "https://en.wikipedia.org/wiki/Cone_penetration_test",
+                "encodingType": "application/pdf",
+                "metadata": "https://en.wikipedia.org/wiki/Cone_penetration_test",
+                "properties": {},
+                "sensorType": "https://data.geoscience.fr/ncl/Proc/86",
+                "Projects": [{"id": "$Project2"}]
+            }
+        },
+        {
+            "id": "Collar2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhCollarThings",
+            "body": {
+                "name": "TestCollar2",
+                "description": "TestCollar2X",
+                "properties": {},
+                "Projects": [{"id": "$Project2"}]
+            }
+        },
+        {
+            "id": "LocationCollar2X",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "Locations",
+            "body": {
+                "name": "TestCollar2X Location",
+                "description": "Location of TestCollar2X",
+                "encodingType": "application/geo+json",
+                "location": {
+                    "type": "Point",
+                    "coordinates": [
+                        13,
+                        47
+                    ]
+                },
+                "properties": {},
+                "BhCollarThings": [
+                    {
+                        "@iot.id": "$Collar2"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "Trajectory2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhTrajectoryThings",
+            "body": {
+                "name": "TestTrajectory2",
+                "description": "TestTrajectory2X",
+                "lengthCore": 1,
+                "lengthHole": 2,
+                "offsetCore": 3,
+                "offsetHole": 4,
+                "uom": "mm",
+                "BhCollarThing": {
+                    "@iot.id": "$Collar2"
+                },
+                "properties": {},
+                "Projects": [{"id": "$Project2"}]
+            }
+        },
+        {
+            "id": "LocationTrajectory2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "Locations",
+            "body": {
+                "name": "TestTrajectory2X Location",
+                "description": "Location of TestTrajectory2X",
+                "encodingType": "application/geo+json",
+                "location": {
+                    "type": "Point",
+                    "coordinates": [
+                        13,
+                        47
+                    ]
+                },
+                "properties": {},
+                "BhTrajectoryThings": [
+                    {
+                        "@iot.id": "$Trajectory2"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "SamplingCore2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhSamplings",
+            "body": {
+                "name": "TestSamplingCore 2",
+                "description": "TestSamplingCore 2",
+                "time": "2020-12-18T23:00:00Z",
+                "BhTrajectoryThing": {
+                    "@iot.id": "$Trajectory2"
+                },
+                "samplingLocation": {
+                    "type": "Point",
+                    "coordinates": [
+                        2.71151182,
+                        51.0851896
+                    ]
+                },
+                "parameter": {}
+            }
+        },
+        {
+            "id": "BhSamplerCore2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhSamplers",
+            "body": {
+                "name": "BhSamplerCore 2",
+                "description": "BhSamplerCore 2",
+                "link": "http://bli.bla.com",
+                "BhSamplings": [
+                    {
+                        "@iot.id": "$SamplingCore2"
+                    }
+                ],
+                "properties": {}
+            }
+        },
+        {
+            "id": "BhSamplingProcedureCore2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhSamplingProcedures",
+            "body": {
+                "name": "BhSamplingProcedureCore2",
+                "description": "BhSamplingProcedureCore2",
+                "link": "http://bli.bla.com",
+                "BhSamplings": [
+                    {
+                        "@iot.id": "$SamplingCore2"
+                    }
+                ],
+                "BhSamplers": [
+                    {
+                        "@iot.id": "$BhSamplerCore2"
+                    }
+                ],
+                "properties": {}
+            }
+        },
+        {
+            "id": "SamplingCorePoint2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhSamplings",
+            "body": {
+                "name": "TestSamplingCorePoint 2",
+                "description": "TestSamplingCorePoint 2",
+                "atPosition": 1,
+                "time": "2020-12-18T23:00:00Z",
+                "positionUom": "mm",
+                "BhTrajectoryThing": {
+                    "@iot.id": "$Trajectory2"
+                },
+                "samplingLocation": {
+                    "type": "Point",
+                    "coordinates": [
+                        2.71151182,
+                        51.0851896
+                    ]
+                },
+                "parameter": {}
+            }
+        },
+        {
+            "id": "BhSamplerCorePoint2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhSamplers",
+            "body": {
+                "name": "BhSamplerCorePoint 2",
+                "description": "BhSamplerCorePoint 2",
+                "link": "http://bli.bla.com",
+                "BhSamplings": [
+                    {
+                        "@iot.id": "$SamplingCorePoint2"
+                    }
+                ],
+                "properties": {}
+            }
+        },
+        {
+            "id": "BhSamplingProcedureCorePoint2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhSamplingProcedures",
+            "body": {
+                "name": "BhSamplingProcedureCorePoint 2",
+                "description": "BhSamplingProcedureCorePoint 2",
+                "link": "http://bli.bla.com",
+                "BhSamplings": [
+                    {
+                        "@iot.id": "$SamplingCorePoint2"
+                    }
+                ],
+                "BhSamplers": [
+                    {
+                        "@iot.id": "$BhSamplerCorePoint2"
+                    }
+                ],
+                "properties": {}
+            }
+        },
+        {
+            "id": "SamplingCoreSegment2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhSamplings",
+            "body": {
+                "name": "TestSamplingCoreSegment 2",
+                "description": "TestSamplingCoreSegment 2",
+                "fromPosition": 2,
+                "toPosition": 3,
+                "time": "2020-12-18T23:00:00Z",
+                "positionUom": "mm",
+                "BhTrajectoryThing": {
+                    "@iot.id": "$Trajectory2"
+                },
+                "samplingLocation": {
+                    "type": "Point",
+                    "coordinates": [
+                        2.71151182,
+                        51.0851896
+                    ]
+                },
+                "parameter": {}
+            }
+        },
+        {
+            "id": "BhSamplerCoreSegment2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhSamplers",
+            "body": {
+                "name": "BhSamplerCoreSegment 2",
+                "description": "BhSamplerCoreSegment 2",
+                "link": "http://bli.bla.com",
+                "BhSamplings": [
+                    {
+                        "@iot.id": "$SamplingCoreSegment2"
+                    }
+                ],
+                "properties": {}
+            }
+        },
+        {
+            "id": "BhSamplingProcedureCoreSegment2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhSamplingProcedures",
+            "body": {
+                "name": "BhSamplingProcedureCoreSegment 2",
+                "description": "BhSamplingProcedureCoreSegment 2",
+                "link": "http://bli.bla.com",
+                "BhSamplings": [
+                    {
+                        "@iot.id": "$SamplingCoreSegment2"
+                    }
+                ],
+                "BhSamplers": [
+                    {
+                        "@iot.id": "$BhSamplerCoreSegment2"
+                    }
+                ],
+                "properties": {}
+            }
+        },
+        {
+            "id": "SamplingHole2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhSamplings",
+            "body": {
+                "name": "TestSamplingHole 2",
+                "description": "TestSamplingHole 2",
+                "time": "2020-12-18T23:00:00Z",
+                "BhTrajectoryThing": {
+                    "@iot.id": "$Trajectory2"
+                },
+                "samplingLocation": {
+                    "type": "Point",
+                    "coordinates": [
+                        2.71151182,
+                        51.0851896
+                    ]
+                },
+                "parameter": {}
+            }
+        },
+        {
+            "id": "BhSamplerHole2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhSamplers",
+            "body": {
+                "name": "BhSamplerHole 2",
+                "description": "BhSamplerHole 2",
+                "link": "http://bli.bla.com",
+                "BhSamplings": [
+                    {
+                        "@iot.id": "$SamplingHole2"
+                    }
+                ],
+                "properties": {}
+            }
+        },
+        {
+            "id": "BhSamplingProcedureHole2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhSamplingProcedures",
+            "body": {
+                "name": "BhSamplingProcedureHole 2",
+                "description": "BhSamplingProcedureHole 2",
+                "link": "http://bli.bla.com",
+                "BhSamplings": [
+                    {
+                        "@iot.id": "$SamplingHole2"
+                    }
+                ],
+                "BhSamplers": [
+                    {
+                        "@iot.id": "$BhSamplerHole2"
+                    }
+                ],
+                "properties": {}
+            }
+        },
+        {
+            "id": "SamplingHolePoint2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhSamplings",
+            "body": {
+                "name": "TestSamplingHolePoint 2",
+                "description": "TestSamplingHolePoint 2",
+                "atPosition": 1,
+                "time": "2020-12-18T23:00:00Z",
+                "positionUom": "mm",
+                "BhTrajectoryThing": {
+                    "@iot.id": "$Trajectory2"
+                },
+                "samplingLocation": {
+                    "type": "Point",
+                    "coordinates": [
+                        2.71151182,
+                        51.0851896
+                    ]
+                },
+                "parameter": {}
+            }
+        },
+        {
+            "id": "BhSamplerHolePoint2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhSamplers",
+            "body": {
+                "name": "BhSamplerHolePoint 2",
+                "description": "BhSamplerHolePoint 2",
+                "link": "http://bli.bla.com",
+                "BhSamplings": [
+                    {
+                        "@iot.id": "$SamplingHolePoint2"
+                    }
+                ],
+                "properties": {}
+            }
+        },
+        {
+            "id": "BhSamplingProcedureHolePoint2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhSamplingProcedures",
+            "body": {
+                "name": "BhSamplingProcedureHolePoint 2",
+                "description": "BhSamplingProcedureHolePoint 2",
+                "link": "http://bli.bla.com",
+                "BhSamplings": [
+                    {
+                        "@iot.id": "$SamplingHolePoint2"
+                    }
+                ],
+                "BhSamplers": [
+                    {
+                        "@iot.id": "$BhSamplerHolePoint2"
+                    }
+                ],
+                "properties": {}
+            }
+        },
+        {
+            "id": "SamplingHoleSegment2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhSamplings",
+            "body": {
+                "name": "TestSamplingHoleSegment 2",
+                "description": "TestSamplingHoleSegment 2",
+                "fromPosition": 2,
+                "toPosition": 3,
+                "time": "2020-12-18T23:00:00Z",
+                "positionUom": "mm",
+                "BhTrajectoryThing": {
+                    "@iot.id": "$Trajectory2"
+                },
+                "samplingLocation": {
+                    "type": "Point",
+                    "coordinates": [
+                        2.71151182,
+                        51.0851896
+                    ]
+                },
+                "parameter": {}
+            }
+        },
+        {
+            "id": "BhSamplerHoleSegment2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhSamplers",
+            "body": {
+                "name": "BhSamplerHoleSegment 2",
+                "description": "BhSamplerHoleSegment 2",
+                "link": "http://bli.bla.com",
+                "BhSamplings": [
+                    {
+                        "@iot.id": "$SamplingHoleSegment2"
+                    }
+                ],
+                "properties": {}
+            }
+        },
+        {
+            "id": "BhSamplingProcedureHoleSegment2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhSamplingProcedures",
+            "body": {
+                "name": "BhSamplingProcedureHoleSegment 2",
+                "description": "BhSamplingProcedureHoleSegment 2",
+                "link": "http://bli.bla.com",
+                "BhSamplings": [
+                    {
+                        "@iot.id": "$SamplingHoleSegment2"
+                    }
+                ],
+                "BhSamplers": [
+                    {
+                        "@iot.id": "$BhSamplerHoleSegment2"
+                    }
+                ],
+                "properties": {}
+            }
+        },
+        {
+            "id": "BhHoleFOI2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhFeaturesOfInterest",
+            "body": {
+                "name": "HoleFOI 2",
+                "description": "The HoleFOI 2",
+                "encodingType": "application/geo+json",
+                "feature": {
+                    "type": "Point",
+                    "coordinates": [
+                        13,
+                        47
+                    ]
+                },
+                "BhSampling": {
+                    "@iot.id": "$SamplingHole2"
+                },
+                "BhFeatureTypes": [
+                    {"@iot.id": "$BhFoiTypeHole"},
+                    {"@iot.id": "$BhFoiTypeEntire"}
+                ],
+                "length": 10,
+                "lengthUom": "m"
+            }
+        },
+        {
+            "id": "BhHolePointFOI2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhFeaturesOfInterest",
+            "body": {
+                "name": "HolePointFOI 2",
+                "description": "The HolePointFOI 2",
+                "encodingType": "application/geo+json",
+                "feature": {
+                    "type": "Point",
+                    "coordinates": [
+                        13,
+                        47
+                    ]
+                },
+                "BhSampling": {
+                    "@iot.id": "$SamplingHolePoint2"
+                },
+                "BhSampledFeatures": [{
+                    "@iot.id": "$BhHoleFOI2"
+                }],
+                "BhFeatureTypes": [
+                    {"@iot.id": "$BhFoiTypeHole"},
+                    {"@iot.id": "$BhFoiTypePoint"}
+                ]
+            }
+        },
+        {
+            "id": "BhHoleSegmentFOI2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhFeaturesOfInterest",
+            "body": {
+                "name": "HoleSegmentFOI 2",
+                "description": "The HoleSegmentFOI 2",
+                "encodingType": "application/geo+json",
+                "feature": {
+                    "type": "Point",
+                    "coordinates": [
+                        13,
+                        47
+                    ]
+                },
+                "BhSampling": {
+                    "@iot.id": "$SamplingHoleSegment2"
+                },
+                "BhSampledFeatures": [{
+                    "@iot.id": "$BhHoleFOI2"
+                }],
+                "BhFeatureTypes": [
+                    {"@iot.id": "$BhFoiTypeHole"},
+                    {"@iot.id": "$BhFoiTypeSegment"}
+                ],
+                "length": 10,
+                "lengthUom": "m"
+            }
+        },
+        {
+            "id": "BhCoreFOI2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhFeaturesOfInterest",
+            "body": {
+                "name": "CoreFOI 2",
+                "description": "The CoreFOI 2",
+                "encodingType": "application/geo+json",
+                "feature": {
+                    "type": "Point",
+                    "coordinates": [
+                        13,
+                        47
+                    ]
+                },
+                "BhSampling": {
+                    "@iot.id": "$SamplingCore2"
+                },
+                "BhFeatureTypes": [
+                    {"@iot.id": "$BhFoiTypeCore"},
+                    {"@iot.id": "$BhFoiTypeEntire"}
+                ],
+                "length": 10,
+                "lengthUom": "m"
+            }
+        },
+        {
+            "id": "BhCorePointFOI2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhFeaturesOfInterest",
+            "body": {
+                "name": "CorePointFOI 2",
+                "description": "The CorePointFOI 2",
+                "encodingType": "application/geo+json",
+                "feature": {
+                    "type": "Point",
+                    "coordinates": [
+                        13,
+                        47
+                    ]
+                },
+                "BhSampling": {
+                    "@iot.id": "$SamplingCorePoint2"
+                },
+                "BhSampledFeatures": [{
+                    "@iot.id": "$BhCoreFOI2"
+                }],
+                "BhFeatureTypes": [
+                    {"@iot.id": "$BhFoiTypeCore"},
+                    {"@iot.id": "$BhFoiTypePoint"}
+                ]
+            }
+        },
+        {
+            "id": "BhCoreSegmentFOI2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhFeaturesOfInterest",
+            "body": {
+                "name": "CoreSegmentFOI 2",
+                "description": "The CoreSegmentFOI 2",
+                "encodingType": "application/geo+json",
+                "feature": {
+                    "type": "Point",
+                    "coordinates": [
+                        13,
+                        47
+                    ]
+                },
+                "BhSampling": {
+                    "@iot.id": "$SamplingCoreSegment2"
+                },
+                "BhSampledFeatures": [{
+                    "@iot.id": "$BhCoreFOI2"
+                }],
+                "BhFeatureTypes": [
+                    {"@iot.id": "$BhFoiTypeCore"},
+                    {"@iot.id": "$BhFoiTypeSegment"}
+                ],
+                "length": 10,
+                "lengthUom": "m"
+            }
+        },
+        {
+            "id": "Datastream3",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "Datastreams",
+            "body": {
+                "name": "Datastream 3",
+                "description": "Datastream 3 Description",
+                "properties": {},
+                "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Measurement",
+                "phenomenonTime": "2017-12-31T23:00:00.000Z/2019-01-01T00:00:00.000Z",
+                "Sensor": {
+                    "@iot.id": "$Sensor3"
+                },
+                "Thing": {
+                    "@iot.id": "$Trajectory2"
+                },
+                "unitOfMeasurement": {
+                    "name": "µg/m3",
+                    "symbol": "µg/m3",
+                    "definition": "µg/m3"
+                },
+                "ObservedProperty": {
+                    "@iot.id": "$ObservedProperty1"
+                }
+            }
+        },
+        {
+            "id": "Datastream4",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "Datastreams",
+            "body": {
+                "name": "Datastream 4",
+                "description": "Datastream 4 Description",
+                "properties": {},
+                "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Measurement",
+                "phenomenonTime": "2017-12-31T23:00:00.000Z/2019-01-01T00:00:00.000Z",
+                "Sensor": {
+                    "@iot.id": "$Sensor4"
+                },
+                "Thing": {
+                    "@iot.id": "$Trajectory2"
+                },
+                "unitOfMeasurement": {
+                    "name": "µg/m3",
+                    "symbol": "µg/m3",
+                    "definition": "µg/m3"
+                },
+                "RelatedDatastreams": [
+                    {
+                        "@iot.id": "$Datastream3"
+                    }
+                ],
+                "ObservedProperty": {
+                    "@iot.id": "$ObservedProperty2"
+                }
+            }
+        },
+        {
+            "id": "Observation3",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "Observations",
+            "body": {
+                "phenomenonTime": "2017-12-31T23:00:00.000Z/2018-01-01T00:00:00.000Z",
+                "resultTime": null,
+                "result": 12.5962142944,
+                "Datastream": {
+                    "@iot.id": "$Datastream3"
+                },
+                "FeatureOfInterest": {
+                    "@iot.id": "$BhCoreFOI2"
+                }
+            }
+        },
+        {
+            "id": "Observation4",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "Observations",
+            "body": {
+                "phenomenonTime": "2017-12-31T23:00:00.000Z/2018-01-01T00:00:00.000Z",
+                "resultTime": null,
+                "result": 12.123456789,
+                "Datastream": {
+                    "@iot.id": "$Datastream4"
+                },
+                "RelatedObservations": [
+                    {
+                        "@iot.id": "$Observation3"
+                    }
+                ],
+                "FeatureOfInterest": {
+                    "@iot.id": "$BhCorePointFOI2"
+                }
+            }
+        },
+        {
+            "id": "BhPreparationProcedure2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhPreparationProcedures",
+            "body": {
+                "description": "BhPreparationProcedure for CoreFoI 2",
+                "link": "http://some.info.org",
+                "name": "BhPreparationProcedure CoreFoI 2",
+                "properties": {}
+            }
+        },
+        {
+            "id": "BhPreparationStep2",
+            "atomicityGroup": "group1",
+            "method": "post",
+            "url": "BhPreparationSteps",
+            "body": {
+                "description": "BhPreparationStep 2 for CoreFoI 2 plus parasites ;)",
+                "link": "http://some.info.org",
+                "name": "BhPreparationStep CoreFoI 2",
+                "time": "2017-12-31T23:00:00.000Z",
+                "BhPreparationProcedure": {
+                    "@iot.id": "$BhPreparationProcedure2"
+                },
+                "BhFeatureOfInterest": {
+                    "@iot.id": "$BhCoreFOI2"
+                },
+                "properties": {}
+            }
         }
+
     ]
 }

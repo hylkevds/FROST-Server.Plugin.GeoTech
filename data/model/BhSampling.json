@@ -179,8 +179,7 @@
           "inverse": {
             "name": "BhSamplings",
             "entitySet": true,
-            "required": false,
-            "annotations": []
+            "required": false
           },
           "handlers": [
             {
@@ -189,11 +188,29 @@
               "otherTable": "BH_TrajectoryThings",
               "otherField": "ID"
             }
-          ],
-          "annotations": []
+          ]
+        },
+        {
+          "name": "FeaturesOfInterest",
+          "entitySet": true,
+          "entityType": "FeatureOfInterest",
+          "required": false,
+          "symmetrical": false,
+          "inverse": {
+            "name": "BhSampling",
+            "entitySet": false,
+            "required": false
+          },
+          "handlers": [
+            {
+              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperOneToMany",
+              "field": "ID",
+              "otherTable": "FEATURES",
+              "otherField": "SAMPLING_ID"
+            }
+          ]
         }
-      ],
-      "annotations": []
+      ]
     }
   ]
 }

@@ -1,0 +1,192 @@
+{
+  "entries": [
+    {
+      "tableName": "BH_Samplings",
+      "wrappers": [
+        {
+          "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.validator.ValidatorCUD",
+          "checkInsertPreRel": {
+            "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.validator.CheckFixed",
+            "valid": true
+          },
+          "checkInsert": {
+            "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.validator.CheckMulti",
+            "combineType": "OR",
+            "subChecks": [
+              {
+                "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.validator.CheckUserHasRoles",
+                "checkType": "ANY",
+                "roles": [
+                  "admin",
+                  "create"
+                ]
+              },
+              {
+                "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.validator.CheckMulti",
+                "combineType": "AND",
+                "subChecks": [
+                  {
+                    "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.validator.CheckNavLinkQuery",
+                    "targetNavLink": "BhTrajectoryThing",
+                    "query": "$filter\u003dProjects/UserProjectRoles/User/username eq principalName() and Projects/UserProjectRoles/Role/rolename eq \u0027create\u0027",
+                    "emptyAllowed": false
+                  },
+                  {
+                    "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.validator.CheckNavLinkQuery",
+                    "targetNavLink": "BhSampler",
+                    "query": "$filter\u003dBhSamplings/BhTrajectoryThing/Projects/UserProjectRoles/User/username eq principalName() and BhSamplings/BhTrajectoryThing/Projects/UserProjectRoles/Role/rolename eq \u0027update\u0027",
+                    "emptyAllowed": true
+                  },
+                  {
+                    "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.validator.CheckNavLinkQuery",
+                    "targetNavLink": "BhSamplingProcedure",
+                    "query": "$filter\u003dBhSamplings/BhTrajectoryThing/Projects/UserProjectRoles/User/username eq principalName() and BhSamplings/BhTrajectoryThing/Projects/UserProjectRoles/Role/rolename eq \u0027update\u0027",
+                    "emptyAllowed": true
+                  },
+                  {
+                    "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.validator.CheckNavLinkQuery",
+                    "targetNavLink": "BhSample",
+                    "query": "$filter\u003dBhSampling/BhTrajectoryThing/Projects/UserProjectRoles/User/username eq principalName() and BhSampling/BhTrajectoryThing/Projects/UserProjectRoles/Role/rolename eq \u0027update\u0027",
+                    "emptyAllowed": true
+                  }
+                ]
+              }
+            ]
+          },
+          "checkUpdate": {
+            "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.validator.CheckMulti",
+            "combineType": "OR",
+            "subChecks": [
+              {
+                "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.validator.CheckUserHasRoles",
+                "checkType": "ANY",
+                "roles": [
+                  "admin",
+                  "update"
+                ]
+              },
+              {
+                "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.validator.CheckMulti",
+                "combineType": "AND",
+                "subChecks": [
+                  {
+                    "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.validator.CheckEntityQuery",
+                    "query": "$filter\u003dBhTrajectoryThing/Projects/UserProjectRoles/User/username eq principalName() and BhTrajectoryThing/Projects/UserProjectRoles/Role/rolename eq \u0027update\u0027"
+                  },
+                  {
+                    "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.validator.CheckNavLinkQuery",
+                    "targetNavLink": "BhTrajectoryThing",
+                    "query": "$filter\u003dProjects/UserProjectRoles/User/username eq principalName() and Projects/UserProjectRoles/Role/rolename eq \u0027update\u0027",
+                    "emptyAllowed": true
+                  },
+                  {
+                    "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.validator.CheckNavLinkQuery",
+                    "targetNavLink": "BhSampler",
+                    "query": "$filter\u003dBhSamplings/BhTrajectoryThing/Projects/UserProjectRoles/User/username eq principalName() and BhSamplings/BhTrajectoryThing/Projects/UserProjectRoles/Role/rolename eq \u0027update\u0027",
+                    "emptyAllowed": true
+                  },
+                  {
+                    "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.validator.CheckNavLinkQuery",
+                    "targetNavLink": "BhSamplingProcedure",
+                    "query": "$filter\u003dBhSamplings/BhTrajectoryThing/Projects/UserProjectRoles/User/username eq principalName() and BhSamplings/BhTrajectoryThing/Projects/UserProjectRoles/Role/rolename eq \u0027update\u0027",
+                    "emptyAllowed": true
+                  },
+                  {
+                    "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.validator.CheckNavLinkQuery",
+                    "targetNavLink": "BhSample",
+                    "query": "$filter\u003dBhSampling/BhTrajectoryThing/Projects/UserProjectRoles/User/username eq principalName() and BhSampling/BhTrajectoryThing/Projects/UserProjectRoles/Role/rolename eq \u0027update\u0027",
+                    "emptyAllowed": true
+                  }
+                ]
+              }
+            ]
+          },
+          "checkDelete": {
+            "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.validator.CheckMulti",
+            "combineType": "OR",
+            "subChecks": [
+              {
+                "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.validator.CheckUserHasRoles",
+                "checkType": "ANY",
+                "roles": [
+                  "admin",
+                  "delete"
+                ]
+              },
+              {
+                "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.validator.CheckMulti",
+                "combineType": "AND",
+                "subChecks": [
+                  {
+                    "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.validator.CheckEntityQuery",
+                    "query": "$filter\u003dBhTrajectoryThing/Projects/UserProjectRoles/User/username eq principalName() and BhTrajectoryThing/Projects/UserProjectRoles/Role/rolename eq \u0027delete\u0027"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.validator.SecurityWrapperMulti",
+          "wrappers": [
+            {
+              "condition": {
+                "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.validator.CheckUserHasRoles",
+                "checkType": "ANY",
+                "roles": [
+                  "read"
+                ]
+              },
+              "wrapper": {
+                "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.validator.SecurityWrapperPass"
+              }
+            },
+            {
+              "condition": {
+                "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.validator.CheckFixed",
+                "valid": true
+              },
+              "wrapper": {
+                "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.validator.SecurityWrapperJoin",
+                "joins": [
+                  {
+                    "targetTable": "BH_TrajectoryThings",
+                    "targetAlias": "tt",
+                    "joinOnSql": "t.\"TRAJECTORY_ID\" \u003d tt.\"ID\"",
+                    "joinType": "INNER"
+                  },
+                  {
+                    "targetTable": "THING_PROJECTS",
+                    "targetAlias": "tp",
+                    "joinOnSql": "tt.\"ID\" \u003d tp.\"THING_ID\"",
+                    "joinType": "INNER"
+                  },
+                  {
+                    "targetTable": "PROJECTS",
+                    "targetAlias": "pr",
+                    "joinOnSql": "tp.\"PROJECT_ID\" \u003d pr.\"ID\"",
+                    "joinType": "INNER"
+                  },
+                  {
+                    "targetTable": "USER_PROJECT_ROLE",
+                    "targetAlias": "upr",
+                    "joinOnSql": "pr.\"ID\" \u003d upr.\"PROJECT_ID\"",
+                    "joinType": "LEFT"
+                  },
+                  {
+                    "targetTable": "USERS",
+                    "targetAlias": "u",
+                    "joinOnSql": "upr.\"USER_NAME\" \u003d u.\"USER_NAME\" ",
+                    "joinType": "LEFT"
+                  }
+                ],
+                "where": "pr.\"ISPUBLIC\" or u.\"USER_NAME\" \u003d ?",
+                "usernameParameter": true
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

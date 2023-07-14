@@ -47,6 +47,7 @@
             </column>
             <column name="NAME" type="VARCHAR(25)" />
             <column name="DESCRIPTION" type="TEXT" />
+            <column name="ISPUBLIC" type="boolean" />
             <column name="PROPERTIES" type="JSONB"/>
         </createTable>
     </changeSet>

@@ -146,7 +146,7 @@
           "required": false,
           "symmetrical": false,
           "inverse": {
-            "name": "BhSample",
+            "name": "BhSamples",
             "entitySet": true,
             "required": false,
             "annotations": []
@@ -167,12 +167,6 @@
           "entityType": "BhFeatureOfInterest",
           "required": false,
           "symmetrical": true,
-          "inverse": {
-            "name": "",
-            "entitySet": false,
-            "required": false,
-            "annotations": []
-          },
           "handlers": [
             {
               "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperManyToMany",
