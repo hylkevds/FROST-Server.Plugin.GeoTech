@@ -167,7 +167,6 @@
                 "description": "https://en.wikipedia.org/wiki/Cone_penetration_test",
                 "encodingType": "application/pdf",
                 "metadata": "https://en.wikipedia.org/wiki/Cone_penetration_test",
-                "properties": {},
                 "sensorType": "https://data.geoscience.fr/ncl/Proc/86",
                 "Projects": [{"id": "$Project1"}]
             }
@@ -182,7 +181,6 @@
                 "description": "https://en.wikipedia.org/wiki/Cone_penetration_test",
                 "encodingType": "application/pdf",
                 "metadata": "https://en.wikipedia.org/wiki/Cone_penetration_test",
-                "properties": {},
                 "sensorType": "https://data.geoscience.fr/ncl/Proc/86",
                 "Projects": [{"id": "$Project1"}]
             }
@@ -195,7 +193,6 @@
             "body": {
                 "name": "TestCollar1",
                 "description": "TestCollar1X",
-                "properties": {},
                 "Projects": [{"id": "$Project1"}]
             }
         },
@@ -215,7 +212,6 @@
                         47
                     ]
                 },
-                "properties": {},
                 "BhCollarThings": [
                     {
                         "@iot.id": "$Collar1"
@@ -239,7 +235,6 @@
                 "BhCollarThing": {
                     "@iot.id": "$Collar1"
                 },
-                "properties": {},
                 "Projects": [{"id": "$Project1"}]
             }
         },
@@ -259,7 +254,6 @@
                         47
                     ]
                 },
-                "properties": {},
                 "BhTrajectoryThings": [
                     {
                         "@iot.id": "$Trajectory1"
@@ -887,7 +881,6 @@
             "body": {
                 "name": "Datastream 1",
                 "description": "Datastream 1 Description",
-                "properties": {},
                 "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Measurement",
                 "phenomenonTime": "2017-12-31T23:00:00.000Z/2019-01-01T00:00:00.000Z",
                 "Sensor": {
@@ -914,7 +907,6 @@
             "body": {
                 "name": "Datastream 2",
                 "description": "Datastream 2 Description",
-                "properties": {},
                 "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Measurement",
                 "phenomenonTime": "2017-12-31T23:00:00.000Z/2019-01-01T00:00:00.000Z",
                 "Sensor": {
@@ -1023,7 +1015,6 @@
                 "description": "https://en.wikipedia.org/wiki/Cone_penetration_test",
                 "encodingType": "application/pdf",
                 "metadata": "https://en.wikipedia.org/wiki/Cone_penetration_test",
-                "properties": {},
                 "sensorType": "https://data.geoscience.fr/ncl/Proc/86",
                 "Projects": [{"id": "$Project2"}]
             }
@@ -1038,7 +1029,6 @@
                 "description": "https://en.wikipedia.org/wiki/Cone_penetration_test",
                 "encodingType": "application/pdf",
                 "metadata": "https://en.wikipedia.org/wiki/Cone_penetration_test",
-                "properties": {},
                 "sensorType": "https://data.geoscience.fr/ncl/Proc/86",
                 "Projects": [{"id": "$Project2"}]
             }
@@ -1051,7 +1041,6 @@
             "body": {
                 "name": "TestCollar2",
                 "description": "TestCollar2X",
-                "properties": {},
                 "Projects": [{"id": "$Project2"}]
             }
         },
@@ -1071,7 +1060,6 @@
                         47
                     ]
                 },
-                "properties": {},
                 "BhCollarThings": [
                     {
                         "@iot.id": "$Collar2"
@@ -1095,7 +1083,6 @@
                 "BhCollarThing": {
                     "@iot.id": "$Collar2"
                 },
-                "properties": {},
                 "Projects": [{"id": "$Project2"}]
             }
         },
@@ -1115,7 +1102,6 @@
                         47
                     ]
                 },
-                "properties": {},
                 "BhTrajectoryThings": [
                     {
                         "@iot.id": "$Trajectory2"
@@ -1677,7 +1663,6 @@
             "body": {
                 "name": "Datastream 3",
                 "description": "Datastream 3 Description",
-                "properties": {},
                 "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Measurement",
                 "phenomenonTime": "2017-12-31T23:00:00.000Z/2019-01-01T00:00:00.000Z",
                 "Sensor": {
@@ -1704,7 +1689,6 @@
             "body": {
                 "name": "Datastream 4",
                 "description": "Datastream 4 Description",
-                "properties": {},
                 "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Measurement",
                 "phenomenonTime": "2017-12-31T23:00:00.000Z/2019-01-01T00:00:00.000Z",
                 "Sensor": {
