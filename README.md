@@ -3,7 +3,7 @@ A FROST-Server Plugin extending the SensorThings data model with a GeoTech boreh
 
 ## Settings
 
-See the [scripts/docker-compose-separated.yaml](scripts/docker-compose-separated.yaml) for examples.
+See the [scripts/docker-compose.yaml](scripts/docker-compose.yaml) for examples.
 
 ## Data Model
 
