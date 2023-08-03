@@ -104,7 +104,7 @@
                     "joinType": "LEFT"
                   }
                 ],
-                "where": "pr.\"ISPUBLIC\" or u.\"USER_NAME\" \u003d ?",
+                "where": "t.\"ISPUBLIC\" or u.\"USER_NAME\" \u003d ?",
                 "usernameParameter": true
               }
             }
