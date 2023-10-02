@@ -25,8 +25,9 @@ services:
       - auth_db_password=ChangeMe
       - auth_autoUpdateDatabase=true
       - auth_plainTextPassword=false
-      - FROST_LL=debug
-      - FROST_LL_service=debug
+      - FROST_LL=info
+      - FROST_LL_service=info
+      - FROST_LL_org_jooq=info
 
   geotech_database:
     image: postgis/postgis:14-3.2-alpine
