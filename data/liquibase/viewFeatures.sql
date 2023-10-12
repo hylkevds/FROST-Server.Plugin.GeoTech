@@ -8,5 +8,5 @@ AS SELECT
     ST_AsGeoJSON("BH_Features"."FEATURE") as "FEATURE",
     "BH_Features"."SAMPLING_ID",
     "BH_Features"."FEATURE" as "GEOM",
-    ((json_build_object('length', "BH_Features"."LENGTH", 'length_uom', "BH_Features"."LENGTH_UOM", 'recovery_percentage', "BH_Features"."RECOVERY_PERCENTAGE"))::jsonb || ("BH_Features"."PROPERTIES")::jsonb) AS "PROPERTIES"
+    ((json_build_object('length', "BH_Features"."LENGTH", 'length_uom', "BH_Features"."LENGTH_UOM", 'recovery_percentage', "BH_Features"."RECOVERY_PERCENTAGE"))::jsonb || COALESCE("BH_Features"."PROPERTIES"::jsonb, '{}'::jsonb)) AS "PROPERTIES"
 FROM "BH_Features";
