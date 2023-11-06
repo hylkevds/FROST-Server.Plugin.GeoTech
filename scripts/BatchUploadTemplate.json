@@ -248,10 +248,10 @@
                 "description": "Location of TestTrajectory1X",
                 "encodingType": "application/geo+json",
                 "location": {
-                    "type": "Point",
+                    "type": "LineString",
                     "coordinates": [
-                        13,
-                        47
+                        [13.0, 47.0, 0.0],
+                        [13.0, 47.0, -3.0]
                     ]
                 },
                 "BhTrajectoryThings": [
@@ -1098,8 +1098,8 @@
                 "location": {
                     "type": "Point",
                     "coordinates": [
-                        13,
-                        47
+                        [13.0, 47.0, 0.0],
+                        [13.0, 47.0, -3.0]
                     ]
                 },
                 "BhTrajectoryThings": [
