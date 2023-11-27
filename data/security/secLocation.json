@@ -166,7 +166,7 @@
                   {
                     "targetTable": "THINGS",
                     "targetAlias": "tt",
-                    "joinOnSql": "s.\"THING_ID\" \u003d tt.\"ID\"",
+                    "joinOnSql": "tl.\"THING_ID\" \u003d tt.\"ID\"",
                     "joinType": "INNER"
                   },
                   {
