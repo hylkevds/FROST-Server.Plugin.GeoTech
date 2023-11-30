@@ -416,6 +416,26 @@
             deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
     </changeSet>
 
+    <changeSet author="IOSB" id="2023-11-30_BH_ass_related_collar" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="BH_ass_related_collar">
+            <column name="collar_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_related_collar" />
+            </column>
+            <column name="related_collar_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bh_related_collar" />
+            </column>
+        </createTable>
+        <addForeignKeyConstraint constraintName="bh_related_collar_collar_id_fkey"
+            baseTableName="BH_ass_related_collar" baseColumnNames="collar_id"
+            referencedTableName="BH_CollarThings" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+
+        <addForeignKeyConstraint constraintName="bh_related_collar_related_collar_id_fkey"
+            baseTableName="BH_ass_related_collar" baseColumnNames="related_collar_id"
+            referencedTableName="BH_CollarThings" referencedColumnNames="ID"
+            deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" validate="true" />
+    </changeSet>
+
     <changeSet author="scf" id="viewThings.sql" runOnChange="true" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
         <sqlFile dbms="postgresql" endDelimiter="/" stripComments="false" splitStatements="false" path="viewThings.sql" relativeToChangelogFile="true" encoding="utf8"/>
     </changeSet>

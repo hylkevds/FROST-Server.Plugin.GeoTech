@@ -57,7 +57,27 @@
           "annotations": []
         }
       ],
-      "navigationProperties": [],
+      "navigationProperties": [
+        {
+          "name": "RelatedBhCollarThings",
+          "entitySet": true,
+          "entityType": "BhCollarThing",
+          "required": false,
+          "symmetrical": true,
+          "handlers": [
+            {
+              "@class": "de.fraunhofer.iosb.ilt.frostserver.persistence.pgjooq.utils.fieldmapper.FieldMapperManyToMany",
+              "field": "ID",
+              "linkTable": "BH_ass_related_collar",
+              "linkOurField": "collar_id",
+              "linkOtherField": "related_collar_id",
+              "otherTable": "BH_CollarThings",
+              "otherField": "ID"
+            }
+          ],
+          "annotations": []
+        }
+      ],
       "annotations": []
     }
   ]
