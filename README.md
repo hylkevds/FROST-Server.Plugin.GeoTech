@@ -1,6 +1,11 @@
 # FROST-Server.Plugin.GeoTech
 A FROST-Server Plugin extending the SensorThings data model with a GeoTech borehole data model
 
+## Acknowledgement
+
+The development of this plugin  was funded by [BRGM](https://www.brgm.fr) as an implementation and validation of the data model for the [Geotech Interopertability Experiment](https://github.com/opengeospatial/Geotech/wiki).
+
+
 ## Installing
 
 The plugin can be used with docker, or directly on an existing Tomcat server.
@@ -143,3 +148,4 @@ To do a request with a given user, put `<username>:<password>@` before the serve
 
 - `https://Bob:Bob@ogc-demo.k8s.ilt-dmz.iosb.fraunhofer.de/FROST-GeoTech/v1.1/Projects`
 - `https://Kevin:Kevin@ogc-demo.k8s.ilt-dmz.iosb.fraunhofer.de/FROST-GeoTech/v1.1/Projects`
+
