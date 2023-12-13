@@ -30,11 +30,11 @@ To use the plugin with a FROST-Server installed directly in a local Tomcat:
    - `plugins.geojson.enable` = `true`
    - `plugins.modelLoader.enable` = `true`
    - `plugins.modelLoader.modelPath` = `/usr/local/tomcat/webapps/FROST-Server/WEB-INF/data/model`
-   - `plugins.modelLoader.modelFiles` = `Project.json, Restricted.json, Role.json, User.json, UserProjectRole.json`
+   - `plugins.modelLoader.modelFiles` = `BhCollarThing.json, BhFeature.json, BhFeatureType.json, BhPreparationProcedure.json, BhPreparationStep.json, BhSampler.json, BhSampling.json, BhSamplingProcedure.json, BhTrajectoryThing.json, Datastream.json, Location.json, Observation.json, Project.json, Role.json, Sensor.json, User.json, UserProjectRole.json`
    - `plugins.modelLoader.securityPath` = `/usr/local/tomcat/webapps/FROST-Server/WEB-INF/data/security`
-   - `plugins.modelLoader.securityFiles` = `secDatastream.json, secFeature.json, secLocation.json, secObservation.json, secProject.json, secSensor.json, secThing.json, secUser.json`
+   - `plugins.modelLoader.securityFiles` = `secBhPreparationProcedure.json, secBhPreparationStep.json, secBhSampler.json, secBhSampling.json, secBhSamplingProcedure.json, secDatastream.json, secFeature.json, secLocation.json, secObservation.json, secObservedProperty.json, secProject.json, secRole.json, secSensor.json, secThing.json, secUser.json, secUserProjectRole.json`
    - `plugins.modelLoader.liquibasePath` = `/usr/local/tomcat/webapps/FROST-Server/WEB-INF/data/liquibase`
-   - `plugins.modelLoader.liquibaseFiles` = `tablesSecurityUPR.xml`
+   - `plugins.modelLoader.liquibaseFiles` = `geoTech.xml, security.xml`
    - `plugins.modelLoader.idType.Role` = `STRING`
    - `plugins.modelLoader.idType.User` = `STRING`
    - `persistence.idGenerationMode.Role` = `ClientGeneratedOnly`
