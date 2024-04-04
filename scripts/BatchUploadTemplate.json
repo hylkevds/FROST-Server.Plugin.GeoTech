@@ -1096,7 +1096,7 @@
                 "description": "Location of TestTrajectory2X",
                 "encodingType": "application/geo+json",
                 "location": {
-                    "type": "Point",
+                    "type": "LineString",
                     "coordinates": [
                         [13.0, 47.0, 0.0],
                         [13.0, 47.0, -3.0]
